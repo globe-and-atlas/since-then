@@ -24,3 +24,4 @@
 - 2026-09-29 20:58 — commit: chore: initialize project from template
 - 2026-09-29 21:10 — Directive `directives/build_epoch_watch.md` written: Deep Time only for v1, offline, validation contract with anchor times checked against the formula (11:23:18, 21:10:07, 23:39:11, 23:59:54). Narrative lenses scrapped (DECISIONS.md). task.md rewritten. Next: owner answers the open questions, then curate data.
 - 2026-09-29 21:40 — Name set: Since Then. Pebble store (Algolia apps index) has no title match for Since Then, Deep Time, All in a Day, From Then, Long Story Short, Then to Now, All This Time, Down the Ages or Timelapse. 00:00 = Earth formation 4,540 Ma. README, directive, task.md and DECISIONS updated.
+- 2026-09-29 21:15 — commit: docs(epoch-watch): add initial directive and architecture for timescale lenses | README.md,directives/build_epoch_watch.md,knowledge/DECISIONS.md,knowledge/SESSION.md,task.md
