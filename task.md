@@ -1,31 +1,16 @@
-# Task: epoch-watch
+# Task: Since Then (epoch-watch)
 
 ## Objective
 
-Define the first real milestone for this `workflow-python` project.
+Build the Deep Time watchface for Pebble Time 2: Earth's 4,540-million-year history stretched over one day, fully offline. Directive: `directives/build_epoch_watch.md` (full validation contract).
 
-## Context
+## Next
+- [ ] `data/deep_time/units.csv` holds the ICS units, citing the chart version.
+- [ ] `data/deep_time/events.csv` meets the coverage rules (no gap over 30 clock minutes; at least 3 events in 23:59).
+- [ ] `execution/build_deep_time.py` passes the Data section of the contract.
+- [ ] `watchface/` builds for Emery.
+- [ ] The emulator checks pass at the anchor times.
 
-- Deploy target: `local-only`
-- Runtime: `python`
-- Loop mode: `data`
-- Knowledge level: `heavy`
-
-## Acceptance Criteria
-
-- [ ] Objective is rewritten from template language into project language
-- [ ] First implementation step is clear
-- [ ] Relevant directive exists in `directives/`
-- [ ] Health check passes for this profile
-
-## Steps
-
-- [ ] Populate README and context
-- [ ] Draft the first workflow directive
-- [ ] Implement the first thin slice
-
-## Progress Log
-
-### YYYY-MM-DD HH:MM — Bootstrap
-- Project scaffold created from `project-template`
-- Next: replace placeholders and define the first real milestone
+## Parked
+- Phase 2 lenses (Holocene, Common Era, Second Millennium): after the 7-day wrist gate.
+- Narrative lenses: scrapped 2026-09-29.

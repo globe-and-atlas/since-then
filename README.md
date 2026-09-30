@@ -1,28 +1,22 @@
-# epoch-watch
+# Since Then
 
-Scaffolded from `project-template` using the `workflow-python` profile.
+*All in a day.* A Pebble Time 2 watchface by Globe & Atlas that stretches Earth's 4,540-million-year history over 24 hours. Midnight is Earth's formation and the next midnight is now. Oxygen fills the air mid-morning, animals appear after 21:00, the dinosaurs die at 23:39, and humans arrive six seconds before midnight.
 
-## Project Profile
+Sibling of [From Here](https://github.com/globe-and-atlas/from-here). Fully offline: no phone connection needed.
 
-- `profile`: `workflow-python`
-- `deploy`: `local-only`
-- `runtime`: `python`
-- `loop_mode`: `data`
-- `knowledge_level`: `heavy`
+**Status:** directive written, no code yet. See [`directives/build_epoch_watch.md`](directives/build_epoch_watch.md).
 
-## Workshop Standard
+## Notes
+- The face is always 24-hour: midnight to midnight is the span.
+- On DST days a 23- or 25-hour day skips or repeats an hour of Earth history.
 
-This project follows the 3-layer architecture:
+## Layout
 
 ```text
-directives/     Layer 1 — What to do
-agent           Layer 2 — Decide → Delegate → Verify
-execution/      Layer 3 — Deterministic execution (when this profile uses it)
+directives/     What to build, and the validation contract
+execution/      Deterministic data build (CSV → watch resource)
+data/           Curated, sourced units and events
+watchface/      Pebble C app (Emery)
 ```
 
-## Next Steps
-
-1. Fill in the actual project description here.
-2. Update `task.md` with the first real milestone.
-3. Populate `knowledge/context.md`.
-4. Draft the first workflow directive in `directives/`.
+Scaffolded from `project-template` (`workflow-python` profile).
