@@ -60,6 +60,7 @@ Anchor times, all derived from the formula and used in the tests:
 
 | Script | Purpose |
 |---|---|
+| `execution/fetch_ics_units.py` | Fetch the ICS chart (pinned commit, CC BY 4.0) and write `units.csv` |
 | `execution/build_deep_time.py` | Validate CSVs, convert ages to clock seconds, write `deep_time.bin` |
 | `execution/emulator_check.py` | Emulator screenshots at the anchor times (`pebble emu-set-time`) with pixel checks |
 | `execution/cloudpebble.py` | Simulate a CloudPebble GitHub import (copy from `from-here`) |
@@ -131,3 +132,11 @@ Process:
 ## Open questions (owner)
 1. ~~Name~~ Resolved 2026-09-29: **Since Then**. No Pebble store title uses it (checked against the store's search). "Deep Time" is crowded outside Pebble (DeepTime for Geology, Deep Time Walk). The name fits every lens, and "deep time" goes in the store description for search.
 2. ~~00:00 anchor~~ Resolved 2026-09-29: Earth's formation, 4,540 Ma.
+
+## Learnings — 2026-09-29 (data slice)
+- **Units come from the ICS chart's own RDF** (`i-c-stratigraphy/chart`, pinned commit `81618a8`, "Modified 2024-12", CC BY 4.0): 74 units with base, uncertainty and official colour. It has newer values than older summaries: the Cretaceous base is 143.1 ± 0.6 Ma, not 145.
+- **The 30-minute gap rule bites in the Precambrian.** 30 clock minutes is 94.6 Myr, so the familiar round 100 Myr steps fail. The gaps were filled with more real events, not by moving ages.
+- **`events.csv` gained a `kind` column** (`event` or `state`). A few rows describe conditions (no free oxygen, a fainter Sun, closer Moon) and sit inside their true range with a wide uncertainty.
+- **The last second is crowded.** Four events are younger than one clock second (52,546 years): Out of Africa, the LGM, the Holocene and writing. All share 23:59:59 or 23:59:58, so the watch can show only the latest. Open design question: rotate them within the final second, or show a "last second" list.
+- **The label width check is approximate** (a conservative per-character table for GOTHIC_18). The emulator screenshot is the real check.
+- **Results:** 74 units, 110 events, `deep_time.bin` 9,818 bytes, deterministic; pytest 21 passed.

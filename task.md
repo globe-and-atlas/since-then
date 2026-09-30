@@ -5,9 +5,11 @@
 Build the Deep Time watchface for Pebble Time 2: Earth's 4,540-million-year history stretched over one day, fully offline. Directive: `directives/build_epoch_watch.md` (full validation contract).
 
 ## Next
-- [ ] `data/deep_time/units.csv` holds the ICS units, citing the chart version.
-- [ ] `data/deep_time/events.csv` meets the coverage rules (no gap over 30 clock minutes; at least 3 events in 23:59).
-- [ ] `execution/build_deep_time.py` passes the Data section of the contract.
+- [x] `data/deep_time/units.csv` holds the ICS units, citing the chart version.
+- [x] `data/deep_time/events.csv` meets the coverage rules (no gap over 30 clock minutes; at least 3 events in 23:59).
+- [ ] Every `events.csv` row is checked against its cited source (ages and wording were written from knowledge; not yet verified row by row).
+- [x] `execution/build_deep_time.py` passes the Data section of the contract.
+- [ ] Decide how the final second shows the 4 events that share 23:59:58-59.
 - [ ] `watchface/` builds for Emery.
 - [ ] The emulator checks pass at the anchor times.
 

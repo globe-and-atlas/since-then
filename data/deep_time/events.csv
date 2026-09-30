@@ -1,0 +1,111 @@
+age_ma,uncertainty_ma,kind,label,source
+4540,50,event,Earth forms around the young Sun,https://en.wikipedia.org/wiki/Age_of_Earth
+4510,20,event,"A Mars-sized body hits Earth, making the Moon",https://en.wikipedia.org/wiki/Giant-impact_hypothesis
+4460,40,event,The Moon's magma ocean cools into a crust,https://en.wikipedia.org/wiki/Lunar_magma_ocean
+4404,8,event,Oldest known crystal: a Jack Hills zircon,https://en.wikipedia.org/wiki/Jack_Hills
+4350,100,event,Hadean zircons hint that continents exist,https://en.wikipedia.org/wiki/Hadean
+4300,100,event,Zircons suggest liquid water oceans,https://en.wikipedia.org/wiki/Origin_of_water_on_Earth
+4280,100,event,"Nuvvuagittuq, Quebec: disputed oldest crust",https://en.wikipedia.org/wiki/Nuvvuagittuq_Greenstone_Belt
+4200,100,event,"LUCA, the last common ancestor of life",https://doi.org/10.1038/s41559-024-02461-1
+4150,150,state,"The Moon is far closer, and days are short",https://en.wikipedia.org/wiki/Tidal_acceleration
+4100,10,event,Possible life's carbon in a Jack Hills zircon,https://doi.org/10.1073/pnas.1517557112
+4031,3,event,"Acasta Gneiss, Canada: oldest intact rock",https://en.wikipedia.org/wiki/Acasta_Gneiss
+3950,150,event,Late Heavy Bombardment batters the planets,https://en.wikipedia.org/wiki/Late_Heavy_Bombardment
+3900,50,event,Imbrium impact carves a vast basin on the Moon,https://en.wikipedia.org/wiki/Mare_Imbrium
+3850,50,event,"Isua, Greenland: some of the oldest sediments",https://en.wikipedia.org/wiki/Isua_Greenstone_Belt
+3770,20,event,"Possible microfossils, Nuvvuagittuq (disputed)",https://doi.org/10.1038/nature21377
+3700,20,event,"Disputed stromatolites at Isua, Greenland",https://doi.org/10.1038/nature19355
+3650,200,state,"No free oxygen: air is nitrogen and CO2",https://en.wikipedia.org/wiki/Atmosphere_of_Earth
+3600,100,event,Vaalbara: a possible first supercontinent,https://en.wikipedia.org/wiki/Vaalbara
+3540,200,state,A hotter mantle erupts komatiite lavas,https://en.wikipedia.org/wiki/Komatiite
+3480,20,event,Australia: stromatolites built by microbes,https://en.wikipedia.org/wiki/Dresser_Formation
+3400,20,event,"Strelley Pool: fossil cells that ate sulfur",https://doi.org/10.1038/ngeo1238
+3330,300,state,Microbial mats carpet shallow seafloors,https://en.wikipedia.org/wiki/Microbial_mat
+3260,20,event,"S2 impact, South Africa: 50-200x Chicxulub",https://doi.org/10.1073/pnas.2408721121
+3220,10,event,"Barberton: some of the oldest tidal flats",https://en.wikipedia.org/wiki/Barberton_Greenstone_Belt
+3200,50,event,Microbes already fix nitrogen from the air,https://doi.org/10.1038/nature14180
+3150,300,state,The Sun is about a fifth dimmer than today,https://en.wikipedia.org/wiki/Faint_young_Sun_paradox
+3100,100,event,Plate tectonics spreading (still debated),https://en.wikipedia.org/wiki/Plate_tectonics
+3030,300,state,Cyanobacteria may already make oxygen,https://en.wikipedia.org/wiki/Cyanobacteria
+2960,20,event,First whiffs of free oxygen in Pongola soils,https://doi.org/10.1038/nature12426
+2900,50,event,"Pongola glaciation, the oldest known ice age",https://en.wikipedia.org/wiki/Pongola_glaciation
+2850,50,event,"Witwatersrand, the richest gold field, forms",https://en.wikipedia.org/wiki/Witwatersrand_Basin
+2800,50,event,Continents grow fast as cratons stabilise,https://en.wikipedia.org/wiki/Craton
+2750,50,event,Huge lava floods across early continents,https://en.wikipedia.org/wiki/Large_igneous_province
+2700,30,event,Fossil raindrops record a thin atmosphere,https://doi.org/10.1038/nature10890
+2650,100,state,A methane haze may turn the sky orange,https://doi.org/10.1038/ngeo1425
+2600,100,state,Stromatolite reefs thrive in shallow seas,https://en.wikipedia.org/wiki/Stromatolite
+2550,100,event,Superia and Sclavia cratons assemble,https://en.wikipedia.org/wiki/Kenorland
+2500,20,event,A whiff of oxygen in Australia's McRae Shale,https://doi.org/10.1126/science.1140325
+2460,10,event,"Hamersley, Australia: great banded iron beds",https://en.wikipedia.org/wiki/Banded_iron_formation
+2400,50,event,Great Oxidation Event: oxygen fills the air,https://en.wikipedia.org/wiki/Great_Oxidation_Event
+2330,10,event,"Sulfur signal vanishes: oxygen is here to stay",https://doi.org/10.1126/sciadv.1600134
+2290,100,event,"Huronian glaciation, perhaps a snowball Earth",https://en.wikipedia.org/wiki/Huronian_glaciation
+2220,20,event,Lomagundi event: the carbon cycle swings,https://en.wikipedia.org/wiki/Lomagundi-Jatuli_event
+2160,100,state,Rusty red beds show the air holds oxygen,https://en.wikipedia.org/wiki/Red_beds
+2100,30,event,"Francevillian biota, Gabon: puzzling fossils",https://en.wikipedia.org/wiki/Francevillian_biota
+2023,4,event,"Vredefort: Earth's largest known crater",https://en.wikipedia.org/wiki/Vredefort_impact_structure
+1960,50,event,Trans-Hudson orogeny welds North America,https://en.wikipedia.org/wiki/Trans-Hudson_orogeny
+1880,20,event,Gunflint chert preserves microbial life,https://en.wikipedia.org/wiki/Gunflint_chert
+1849,1,event,"Sudbury impact, Ontario: a nickel-rich crater",https://en.wikipedia.org/wiki/Sudbury_Basin
+1800,100,event,Columbia (Nuna) supercontinent assembled,https://en.wikipedia.org/wiki/Columbia_(supercontinent)
+1720,100,state,"The Boring Billion: stable, slow-changing seas",https://en.wikipedia.org/wiki/Boring_Billion
+1630,30,event,Oldest accepted multicellular eukaryotes,https://doi.org/10.1016/j.scib.2019.12.017
+1560,10,event,"Decimetre-scale seaweed-like fossils, China",https://doi.org/10.1038/ncomms11500
+1500,200,state,"Oceans: oxygen on top, sulfidic below",https://en.wikipedia.org/wiki/Canfield_ocean
+1460,20,event,Glacier National Park's oldest rocks settle,https://en.wikipedia.org/wiki/Belt_Supergroup
+1400,10,event,A day lasts about 18.7 hours,https://doi.org/10.1073/pnas.1717689115
+1350,100,event,Columbia begins to break apart,https://en.wikipedia.org/wiki/Columbia_(supercontinent)
+1270,5,event,Mackenzie dike swarm floods northern Canada,https://en.wikipedia.org/wiki/Mackenzie_Large_Igneous_Province
+1200,50,event,Grenville orogeny starts a vast mountain belt,https://en.wikipedia.org/wiki/Grenville_orogeny
+1109,5,event,Midcontinent Rift nearly splits North America,https://en.wikipedia.org/wiki/Midcontinent_Rift_System
+1047,13,event,Bangiomorpha: oldest known sexual reproduction,https://doi.org/10.1130/G39829.1
+1000,50,event,Rodinia supercontinent is assembled,https://en.wikipedia.org/wiki/Rodinia
+950,50,event,"Ourasphaira, Arctic Canada: earliest fungus?",https://doi.org/10.1038/s41586-019-1217-0
+890,10,event,Possible sponge fabric in reef rock (disputed),https://doi.org/10.1038/s41586-021-03773-z
+800,50,event,Oxygen rises again in the Neoproterozoic,https://en.wikipedia.org/wiki/Neoproterozoic_Oxygenation_Event
+750,30,event,Rodinia begins to break apart,https://en.wikipedia.org/wiki/Rodinia
+717,1,event,Sturtian glaciation: ice reaches the equator,https://en.wikipedia.org/wiki/Sturtian_glaciation
+650,10,event,Marinoan glaciation: a second snowball Earth,https://en.wikipedia.org/wiki/Marinoan_glaciation
+575,5,event,"Avalon, Newfoundland: first large complex life",https://en.wikipedia.org/wiki/Ediacaran_biota
+558,1,event,Dickinsonia's cholesterol confirms an animal,https://doi.org/10.1126/science.aat7228
+538.8,0.6,event,Cambrian explosion: animal body plans appear,https://en.wikipedia.org/wiki/Cambrian_explosion
+521,2,event,Trilobites appear,https://en.wikipedia.org/wiki/Trilobite
+508,1,event,Burgess Shale animals are buried in mud,https://en.wikipedia.org/wiki/Burgess_Shale
+470,5,event,First land plants leave their spores,https://en.wikipedia.org/wiki/Evolutionary_history_of_plants
+445,2,event,Late Ordovician mass extinction,https://en.wikipedia.org/wiki/Late_Ordovician_mass_extinction
+430,5,event,Cooksonia: early plants with water-carrying stems,https://en.wikipedia.org/wiki/Cooksonia
+407,2,event,Rhynie chert preserves an early land ecosystem,https://en.wikipedia.org/wiki/Rhynie_chert
+385,5,event,"First forests grow, in what is now New York",https://en.wikipedia.org/wiki/Cairo_fossil_forest
+375,5,event,Tiktaalik: a fish with a neck and wrists,https://en.wikipedia.org/wiki/Tiktaalik
+372,1,event,Late Devonian mass extinction,https://en.wikipedia.org/wiki/Late_Devonian_extinction
+335,10,event,Pangaea begins to assemble,https://en.wikipedia.org/wiki/Pangaea
+312,2,event,"Hylonomus, one of the earliest reptiles",https://en.wikipedia.org/wiki/Hylonomus
+305,2,event,Carboniferous rainforest collapse,https://en.wikipedia.org/wiki/Carboniferous_rainforest_collapse
+252,0.1,event,"The Great Dying: 80-90% of species lost",https://en.wikipedia.org/wiki/Permian%E2%80%93Triassic_extinction_event
+233,1,event,Carnian Pluvial Event; dinosaurs spread,https://en.wikipedia.org/wiki/Carnian_pluvial_episode
+225,5,event,"Early mammal relatives, the mammaliaforms",https://en.wikipedia.org/wiki/Mammaliaformes
+201.4,0.2,event,End-Triassic extinction; dinosaurs take over,https://en.wikipedia.org/wiki/Triassic%E2%80%93Jurassic_extinction_event
+175,10,event,Pangaea splits; the Atlantic Ocean opens,https://en.wikipedia.org/wiki/Pangaea
+150,2,event,"Archaeopteryx, part bird and part dinosaur",https://en.wikipedia.org/wiki/Archaeopteryx
+125,5,event,Flowering plants spread,https://en.wikipedia.org/wiki/Archaefructus
+93.9,0.2,event,Cenomanian-Turonian oceanic anoxic event,https://en.wikipedia.org/wiki/Cenomanian-Turonian_boundary_event
+68,1,event,Tyrannosaurus rex,https://en.wikipedia.org/wiki/Tyrannosaurus
+66,0.05,event,Chicxulub impact ends the age of dinosaurs,https://en.wikipedia.org/wiki/Chicxulub_crater
+56,0.1,event,"PETM: a sudden hothouse, 5-8 °C warmer",https://en.wikipedia.org/wiki/Paleocene%E2%80%93Eocene_Thermal_Maximum
+50,2,event,"Pakicetus, an early whale that walked",https://en.wikipedia.org/wiki/Pakicetus
+34,1,event,Antarctica freezes over,https://en.wikipedia.org/wiki/Antarctic_ice_sheet
+20,5,event,Grasslands spread across the continents,https://en.wikipedia.org/wiki/Grassland
+7,0.5,event,"Sahelanthropus, an early ape near our line",https://en.wikipedia.org/wiki/Sahelanthropus
+5.33,0.01,event,Zanclean flood refills the dry Mediterranean,https://en.wikipedia.org/wiki/Zanclean_flood
+3.3,0.1,event,"Lomekwi, Kenya: oldest known stone tools",https://en.wikipedia.org/wiki/Lomekwi
+3.2,0.05,event,"Lucy, Australopithecus afarensis, walks",https://en.wikipedia.org/wiki/Lucy_(Australopithecus)
+2.8,0.05,event,"Ledi-Geraru jaw, the earliest known Homo",https://en.wikipedia.org/wiki/LD_350-1
+2.58,0.01,event,Northern ice ages begin,https://en.wikipedia.org/wiki/Quaternary_glaciation
+1.9,0.1,event,"Homo erectus, the first long-distance walker",https://en.wikipedia.org/wiki/Homo_erectus
+1.0,0.1,event,"Wonderwerk Cave: early controlled fire",https://en.wikipedia.org/wiki/Wonderwerk_Cave
+0.3,0.015,event,"Jebel Irhoud, Morocco: oldest Homo sapiens",https://en.wikipedia.org/wiki/Jebel_Irhoud
+0.06,0.01,event,Modern humans spread out of Africa,https://en.wikipedia.org/wiki/Recent_African_origin_of_modern_humans
+0.021,0.002,event,Last Glacial Maximum: ice at its largest,https://en.wikipedia.org/wiki/Last_Glacial_Maximum
+0.0117,0.0001,event,"Ice age ends; farming begins soon after",https://en.wikipedia.org/wiki/Holocene
+0.0052,0.0001,event,"Writing is invented, in Mesopotamia",https://en.wikipedia.org/wiki/History_of_writing

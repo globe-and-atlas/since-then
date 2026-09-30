@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""Validate data/deep_time/*.csv and write watchface/resources/deep_time.bin.
+
+Clock time t (seconds after local midnight) maps linearly to age: age_Ma = EARTH_MA * (1 - t / DAY).
+00:00 is Earth's formation; units older than that (the ICS Hadean base) are clipped to 00:00.
+
+deep_time.bin (little-endian):
+  header  "STN1", u16 unit_count, u16 event_count
+  unit    u32 start_s, u32 end_s, u8 rank (0 eon .. 3 epoch), u8 GColor8, char name[UNIT_NAME]
+  event   u32 clock_s, u8 flags (1 = approximate), char label[EVENT_LABEL]
+Units are sorted by rank then start; events by clock_s. Strings are NUL-padded.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import struct
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+DATA = ROOT / "data" / "deep_time"
+OUT = ROOT / "watchface" / "resources" / "deep_time.bin"
+
+EARTH_MA = 4540.0  # Earth's formation, 4,540 +/- 50 Ma (owner decision 2026-09-29)
+DAY = 86400
+RANKS = ["eon", "era", "period", "epoch"]
+UNIT_NAME = 20
+EVENT_LABEL = 64
+MAX_GAP_S = 30 * 60
+MAX_BYTES = 24 * 1024
+LINE_PX = 188
+APPROX_RATIO = 0.05
+
+# Conservative GOTHIC_18 advance widths (px). Approximate: the emulator screenshot is the final check.
+_NARROW = set("iljtfr.,:;'!|() -")
+_WIDE = set("mwMW@%")
+
+
+def char_px(c: str) -> int:
+    if c in _NARROW:
+        return 4
+    if c in _WIDE:
+        return 13
+    if c.isupper():
+        return 10
+    if c.isdigit():
+        return 9
+    return 8
+
+
+def text_px(s: str) -> int:
+    return sum(char_px(c) for c in s)
+
+
+def wrap_lines(text: str, width: int = LINE_PX) -> list[str]:
+    lines: list[str] = []
+    line = ""
+    for word in text.split():
+        trial = f"{line} {word}".strip()
+        if text_px(trial) <= width or not line:
+            line = trial
+        else:
+            lines.append(line)
+            line = word
+    if line:
+        lines.append(line)
+    return lines
+
+
+def clock_s(age_ma: float) -> int:
+    """Clock second at or before the age (floor), clipped to the day."""
+    t = DAY * (1 - age_ma / EARTH_MA)
+    return max(0, min(DAY - 1, int(t)))
+
+
+def age_at(t: float) -> float:
+    return EARTH_MA * (1 - t / DAY)
+
+
+def gcolor8(hex_color: str) -> int:
+    """Nearest Pebble 64-colour palette entry, as a GColor8 byte (0b11rrggbb)."""
+    h = hex_color.lstrip("#")
+    rgb = [int(h[i:i + 2], 16) for i in (0, 2, 4)]
+    levels = [round(v / 85) for v in rgb]
+    return 0xC0 | (levels[0] << 4) | (levels[1] << 2) | levels[2]
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def validate(units: list[dict[str, str]], events: list[dict[str, str]]) -> list[str]:
+    errors: list[str] = []
+    for i, e in enumerate(events, start=2):
+        if not e["source"].strip():
+            errors.append(f"events.csv:{i} has no source")
+        age = float(e["age_ma"])
+        if not 0 <= age <= EARTH_MA:
+            errors.append(f"events.csv:{i} age {age} outside [0, {EARTH_MA}]")
+        if len(wrap_lines(e["label"])) > 2:
+            errors.append(f"events.csv:{i} label needs more than 2 lines: {e['label']!r}")
+        if len(e["label"].encode("utf-8")) >= EVENT_LABEL:
+            errors.append(f"events.csv:{i} label over {EVENT_LABEL - 1} bytes")
+    for i, u in enumerate(units, start=2):
+        if "ICS International Chronostratigraphic Chart" not in u["source"]:
+            errors.append(f"units.csv:{i} does not cite the ICS chart")
+        if len(u["name"].encode("utf-8")) >= UNIT_NAME:
+            errors.append(f"units.csv:{i} name over {UNIT_NAME - 1} bytes")
+    for rank in RANKS:
+        bases = [float(u["base_ma"]) for u in units if u["rank"] == rank]
+        if any(a <= b for a, b in zip(bases, bases[1:])):
+            errors.append(f"units.csv: {rank} base ages do not strictly decrease")
+    eons = [(float(u["base_ma"]), float(u["top_ma"])) for u in units if u["rank"] == "eon"]
+    for minute in range(DAY // 60 - 1):  # 00:00 .. 23:58
+        age = age_at(minute * 60)
+        if not any(top <= age <= base for base, top in eons):
+            errors.append(f"minute {minute // 60:02d}:{minute % 60:02d} lies in no unit")
+    times = sorted(clock_s(float(e["age_ma"])) for e in events)
+    if times and times[0] > MAX_GAP_S:
+        errors.append(f"first event at {times[0]} s leaves 00:00 uncovered")
+    for a, b in zip(times, times[1:]):
+        if b - a > MAX_GAP_S:
+            errors.append(f"event gap {a // 60 // 60:02d}:{a // 60 % 60:02d} to {b // 60 // 60:02d}:{b // 60 % 60:02d} over 30 min")
+    last_minute = sum(1 for t in times if t >= DAY - 60)
+    if last_minute < 3:
+        errors.append(f"only {last_minute} events in 23:59 (need 3)")
+    return errors
+
+
+def pack(units: list[dict[str, str]], events: list[dict[str, str]]) -> bytes:
+    def fixed(s: str, n: int) -> bytes:
+        return s.encode("utf-8").ljust(n, b"\0")
+
+    unit_rows = sorted(
+        ((RANKS.index(u["rank"]), clock_s(float(u["base_ma"])), clock_s(float(u["top_ma"])) if float(u["top_ma"]) > 0 else DAY, u)
+         for u in units),
+        key=lambda r: (r[0], r[1]),
+    )
+    event_rows = sorted(
+        ((clock_s(float(e["age_ma"])), e) for e in events),
+        key=lambda r: (r[0], -float(r[1]["age_ma"])),
+    )
+    out = bytearray(b"STN1")
+    out += struct.pack("<HH", len(unit_rows), len(event_rows))
+    for rank, start, end, u in unit_rows:
+        out += struct.pack("<IIBB", start, end, rank, gcolor8(u["color"])) + fixed(u["name"], UNIT_NAME)
+    for t, e in event_rows:
+        age, unc = float(e["age_ma"]), float(e["uncertainty_ma"] or 0)
+        flags = 1 if age > 0 and unc / age > APPROX_RATIO else 0
+        out += struct.pack("<IB", t, flags) + fixed(e["label"], EVENT_LABEL)
+    return bytes(out)
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--dry-run", action="store_true", help="validate only; write nothing")
+    args = ap.parse_args()
+    units = read_csv(DATA / "units.csv")
+    events = read_csv(DATA / "events.csv")
+    errors = validate(units, events)
+    for e in errors:
+        print(f"ERROR {e}", file=sys.stderr)
+    if errors:
+        sys.exit(1)
+    blob = pack(units, events)
+    if len(blob) > MAX_BYTES:
+        sys.exit(f"ERROR deep_time.bin is {len(blob)} bytes, over {MAX_BYTES}")
+    print(f"{len(units)} units, {len(events)} events, {len(blob)} bytes")
+    if args.dry_run:
+        return
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_bytes(blob)
+    print(f"wrote {OUT.relative_to(ROOT)}")
+
+
+if __name__ == "__main__":
+    main()
