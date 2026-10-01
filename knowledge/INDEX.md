@@ -8,5 +8,6 @@
 | [ERRORS.md](ERRORS.md) | log | Errors, causes, and fixes |
 | [domain/deep_time_sources.md](domain/deep_time_sources.md) | domain | Source verification record for Deep Time events (2026-09-30) |
 | [domain/history_sources.md](domain/history_sources.md) | domain | Source verification record for the historical lenses (2026-09-30) |
+| [procedural/build_and_check.md](procedural/build_and_check.md) | procedural | Build, verify, test, emulator and sideload commands (2026-09-30) |
 
 Add domain or procedural files as real knowledge emerges.

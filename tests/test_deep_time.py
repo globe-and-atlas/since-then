@@ -118,7 +118,7 @@ def test_resource_layout() -> None:
 
 
 def test_committed_resource_matches_data() -> None:
-    assert bdt.OUT.read_bytes() == bdt.pack(UNITS, EVENTS), "run execution/build_deep_time.py"
+    assert bdt.OUT.read_text() == bdt.c_header(bdt.pack(UNITS, EVENTS), "DEEP_TIME_DATA", "execution/build_deep_time.py"), "run execution/build_deep_time.py"
 
 
 def test_gcolor8_extremes() -> None:

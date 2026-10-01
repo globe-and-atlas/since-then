@@ -34,3 +34,11 @@
 
 - 2026-10-01 — Created five Roman Empire concept renders under `.tmp/renders/roman-empire/` for the chosen Western span, Augustus (27 BCE) through the conventional 476 CE endpoint. Used distinct symbolic graphics alongside the compressed timeline; the final frame notes the Eastern Empire continued. These are concept mockups, not emulator captures.
 - 2026-09-30 11:30 — Historical lenses (owner override of the gate): data/history/events.csv, 228 rows in 7 regions; execution/build_history.py validates per-lens gaps and regional balance and writes history.bin (15.6 KB). verify_sources --data history: 226 MATCH, 2 hand OK; fixed 3 rows and 2 checker regex bugs. pytest 38/38. Next: watch C code.
+- 2026-09-30 22:20 — commit: Historical lenses: Holocene, Common Era, Second Millennium data | .gitignore,data/history/events.csv,directives/build_epoch_watch.md,execution/build_history.py,execution/verify_sources.py
+
+- 2026-10-01 — Created potential timeline UI concepts in `.tmp/renders/potential-uis/`: a five-lens picker plus text-led screens for Deep Time, Holocene, Common Era, Second Millennium, and Roman Empire. No decorative icons; renderings are mockups, not emulator captures.
+
+- 2026-10-01 — Revised all five timeline UI concepts to make live clock time the dominant screen element; historical date/context and event remain secondary. Inspected Deep Time and Common Era renders.
+
+- 2026-10-01 — Added Space Age and Global Communications concept screens and expanded the mock lens picker to seven options. Kept this scoped to render exploration; app settings and datasets were not changed.
+- 2026-09-30 23:00 — Watch built: src/c/main.c (4 lenses, int64 maths, seconds in Deep Time's last minute, shared-second rotation), Clay lens setting, data as generated C headers (CloudPebble-safe). pytest 38, emulator 17/17, CloudPebble dropped none. UNVERIFIED: creator-verifier not run; no physical-watch test yet.

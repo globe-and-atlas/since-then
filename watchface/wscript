@@ -1,0 +1,40 @@
+#
+# Pebble build rules for Since Then. ST_TEST_SECONDS (0..86399) and ST_TEST_LENS (0..3) pin the
+# clock and lens for emulator screenshots; ST_TEST_START_MINUTE (0..1439) starts a running clock at
+# that minute. None is ever set for a distributable build.
+#
+import os
+
+top = '.'
+out = 'build'
+
+
+def options(ctx):
+    ctx.load('pebble_sdk')
+
+
+def configure(ctx):
+    ctx.load('pebble_sdk')
+
+
+def build(ctx):
+    ctx.load('pebble_sdk')
+    binaries = []
+    cached_env = ctx.env
+    for platform in ctx.env.TARGET_PLATFORMS:
+        ctx.env = ctx.all_envs[platform]
+        for name, limit in (('ST_TEST_SECONDS', 86400), ('ST_TEST_LENS', 4), ('ST_TEST_START_MINUTE', 1440)):
+            value = os.environ.get(name)
+            if value is not None:
+                if not 0 <= int(value) < limit:
+                    ctx.fatal('%s must be 0..%d' % (name, limit - 1))
+                ctx.env.append_value('DEFINES', '%s=%d' % (name, int(value)))
+        ctx.set_group(ctx.env.PLATFORM_NAME)
+        app_elf = '{}/pebble-app.elf'.format(ctx.env.BUILD_DIR)
+        ctx.pbl_build(source=ctx.path.ant_glob('src/c/**/*.c'), target=app_elf, bin_type='app')
+        binaries.append({'platform': platform, 'app_elf': app_elf})
+    ctx.env = cached_env
+    ctx.set_group('bundle')
+    ctx.pbl_bundle(binaries=binaries,
+                   js=ctx.path.ant_glob(['src/pkjs/**/*.js', 'src/pkjs/**/*.json']),
+                   js_entry_file='src/pkjs/index.js')

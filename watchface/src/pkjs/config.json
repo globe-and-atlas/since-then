@@ -1,0 +1,25 @@
+[
+  { "type": "heading", "defaultValue": "Since Then" },
+  { "type": "text", "defaultValue": "All in a day. Midnight is the start of the span and the next midnight is now. The face shows where on that span this moment falls." },
+  {
+    "type": "section",
+    "items": [
+      { "type": "heading", "defaultValue": "Timeline" },
+      {
+        "type": "select",
+        "messageKey": "Setting_Lens",
+        "label": "Squeeze into one day",
+        "defaultValue": "0",
+        "options": [
+          { "label": "Deep Time: Earth, 4.54 billion years", "value": "0" },
+          { "label": "Holocene: since the ice age, 11,700 years", "value": "1" },
+          { "label": "Common Era: since 1 CE", "value": "2" },
+          { "label": "Second Millennium: since 1001 CE", "value": "3" }
+        ]
+      },
+      { "type": "text", "defaultValue": "In Deep Time the dinosaurs die at 23:39 and humans arrive six seconds before midnight. The face is always 24-hour: midnight to midnight is the span." }
+    ]
+  },
+  { "type": "text", "defaultValue": "A Globe & Atlas project. Geologic time: ICS International Chronostratigraphic Chart v2024-12 (Cohen et al.), CC BY 4.0. Event dates are checked against the sources listed at github.com/globe-and-atlas/since-then." },
+  { "type": "submit", "defaultValue": "Save" }
+]

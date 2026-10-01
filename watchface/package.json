@@ -1,0 +1,33 @@
+{
+  "name": "since-then",
+  "author": "Globe & Atlas",
+  "version": "0.1.0",
+  "keywords": [
+    "pebble-app"
+  ],
+  "private": true,
+  "dependencies": {
+    "@rebble/clay": "1.1.0"
+  },
+  "pebble": {
+    "displayName": "Since Then",
+    "uuid": "b80c1477-efca-458a-90bf-3eec42f76fc0",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "capabilities": [
+      "configurable"
+    ],
+    "targetPlatforms": [
+      "emery"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "messageKeys": [
+      "Setting_Lens"
+    ],
+    "resources": {
+      "media": []
+    }
+  }
+}

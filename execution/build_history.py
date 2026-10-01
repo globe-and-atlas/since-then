@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate data/history/events.csv for the historical lenses; write watchface/resources/history.bin.
+"""Validate data/history/events.csv for the historical lenses; write watchface/src/c/history_data.h.
 
 Each lens squeezes [start, now] into one day: 00:00 is the start year and 24:00 is the present.
 "Now" moves, so the watch maps years to clock time itself; this script only checks the data against
@@ -7,7 +7,7 @@ a reference present (REF_NOW) and packs it.
 
 Years are historical (no year 0; negative = BC). Astronomical year = year if year > 0 else year + 1.
 
-history.bin (little-endian):
+Packed table, HISTORY_DATA (little-endian):
   header  "HST1", u16 lens_count, u16 event_count
   lens    i16 start (astronomical year), char name[LENS_NAME]
   event   i16 year (historical), u8 flags (1 = approximate), u8 region, char label[EVENT_LABEL]
@@ -22,11 +22,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_deep_time import EVENT_LABEL, wrap_lines  # noqa: E402
+from build_deep_time import EVENT_LABEL, c_header, wrap_lines  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "history" / "events.csv"
-OUT = ROOT / "watchface" / "resources" / "history.bin"
+OUT = ROOT / "watchface" / "src" / "c" / "history_data.h"
 
 REF_NOW = 2026.0  # validation reference; the watch uses the real date
 LENS_NAME = 20
@@ -120,7 +120,7 @@ def main() -> None:
         sys.exit(1)
     blob = pack(events)
     if len(blob) > MAX_BYTES:
-        sys.exit(f"ERROR history.bin is {len(blob)} bytes, over {MAX_BYTES}")
+        sys.exit(f"ERROR the history table is {len(blob)} bytes, over {MAX_BYTES}")
     for name, start in LENSES:
         lens = in_lens(events, start)
         regions = ", ".join(f"{r} {sum(1 for e in lens if e['region'] == r)}" for r in REGIONS)
@@ -129,7 +129,7 @@ def main() -> None:
     if args.dry_run:
         return
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_bytes(blob)
+    OUT.write_text(c_header(blob, "HISTORY_DATA", "execution/build_history.py"))
     print(f"wrote {OUT.relative_to(ROOT)}")
 
 

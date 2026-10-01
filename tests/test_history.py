@@ -106,4 +106,4 @@ def test_resource_layout_and_determinism() -> None:
 
 
 def test_committed_resource_matches_data() -> None:
-    assert bh.OUT.read_bytes() == bh.pack(EVENTS), "run execution/build_history.py"
+    assert bh.OUT.read_text() == bh.c_header(bh.pack(EVENTS), "HISTORY_DATA", "execution/build_history.py"), "run execution/build_history.py"
