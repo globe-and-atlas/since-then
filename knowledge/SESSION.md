@@ -2,11 +2,11 @@
 
 ## Current Session
 
-**Goal:** Directive for the time-based Epoch Watch (narrative lenses scrapped)
-**Agent:** Claude Code CLI (claude-opus-5-5)
-**Handoff-from:** Antigravity AI
-**Handoff-type:** pickup
-**Status:** Directive written; no code yet
+**Goal:** Review epoch-watch and create Deep Time concept renders
+**Agent:** OpenAI Codex (GPT-6)
+**Handoff-from:** Claude Code CLI
+**Handoff-type:** continuation
+**Status:** Review complete; four concept mockups generated in `.tmp/renders/`; watchface source/build remains unimplemented
 
 ## Handoff — YYYY-MM-DD HH:MM
 - **Completed**: [Specific features/files actually finished]
@@ -28,3 +28,9 @@
 - 2026-09-29 22:20 — Data slice: execution/fetch_ics_units.py (ICS RDF, pinned) -> 74 units; events.csv 110 rows with sources and kind; execution/build_deep_time.py validates the contract's Data rules and writes watchface/resources/deep_time.bin (9,818 B, deterministic). pytest 21/21, including rule-rejection tests. Open: row-by-row source verification; final-second display.
 - 2026-09-29 21:25 — commit: Deep Time data: ICS units, sourced events, validated resource build | data/deep_time/events.csv,data/deep_time/units.csv,directives/build_epoch_watch.md,execution/build_deep_time.py,execution/fetch_ics_units.py
 - 2026-09-30 09:30 — Source verification: execution/verify_sources.py (cached fetch; Wikipedia plus Crossref). 87 MATCH, 23 hand-checked OK. Fixed a wrong DOI (1630 Ma), a missing page (385 Ma) and two unsupported dates. pytest 21/21. Next: the other timelines (owner overrode the 7-day gate), then watch code.
+- 2026-09-30 21:55 — commit: Verify Deep Time sources; fix wrong DOI, missing page, unsupported dates | data/deep_time/events.csv,execution/verify_sources.py,knowledge/ERRORS.md,knowledge/INDEX.md,knowledge/SESSION.md
+
+- 2026-10-01 — Reviewed current project state and created four 2× Pebble Time 2 concept renders in `.tmp/renders/` for 11:19, 21:09, 23:39, and 23:59:55. Rendered from Deep Time CSV data; these are layout studies, not emulator captures. Review finding: no `watchface/src/` implementation exists, so the project remains a data/compiler scaffold.
+
+- 2026-10-01 — Created five Roman Empire concept renders under `.tmp/renders/roman-empire/` for the chosen Western span, Augustus (27 BCE) through the conventional 476 CE endpoint. Used distinct symbolic graphics alongside the compressed timeline; the final frame notes the Eastern Empire continued. These are concept mockups, not emulator captures.
+- 2026-09-30 11:30 — Historical lenses (owner override of the gate): data/history/events.csv, 228 rows in 7 regions; execution/build_history.py validates per-lens gaps and regional balance and writes history.bin (15.6 KB). verify_sources --data history: 226 MATCH, 2 hand OK; fixed 3 rows and 2 checker regex bugs. pytest 38/38. Next: watch C code.

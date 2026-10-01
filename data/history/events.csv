@@ -1,0 +1,229 @@
+year,uncertainty_years,kind,region,label,source
+-9700,100,event,Global,The Younger Dryas cold ends; the Holocene begins,https://en.wikipedia.org/wiki/10th_millennium_BC
+-9500,200,event,Middle East,Göbekli Tepe: the oldest known monumental site,https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe
+-9400,200,event,Africa,"Ounjougou, Mali: some of Africa's first pottery",https://en.wikipedia.org/wiki/9th_millennium_BC
+-9300,30,event,Europe,"Star Carr, England: hunters settle by a lake",https://en.wikipedia.org/wiki/9th_millennium_BC
+-9100,200,state,Middle East,Sheep herding begins in northern Iraq,https://en.wikipedia.org/wiki/10th_millennium_BC
+-9050,100,event,Americas,Clovis hunters range across North America,https://en.wikipedia.org/wiki/10th_millennium_BC
+-9000,600,event,Middle East,Jericho: people settle at an oasis,https://en.wikipedia.org/wiki/10th_millennium_BC
+-8800,100,event,Americas,Clovis gives way to Folsom bison hunters,https://en.wikipedia.org/wiki/9th_millennium_BC
+-8750,100,event,Asia,"Ulleungdo, off Korea, erupts",https://en.wikipedia.org/wiki/9th_millennium_BC
+-8700,100,event,Middle East,A Mesopotamian copper pendant: early metal,https://en.wikipedia.org/wiki/9th_millennium_BC
+-8500,200,event,Americas,The Bering land bridge drowns,https://en.wikipedia.org/wiki/9th_millennium_BC
+-8300,200,event,Asia,Millet is first cultivated in China,https://en.wikipedia.org/wiki/9th_millennium_BC
+-8130,100,event,Oceania,"Taupō Caldera, New Zealand, erupts",https://en.wikipedia.org/wiki/9th_millennium_BC
+-8050,500,event,Africa,"Nataruk, Kenya: the oldest known massacre",https://en.wikipedia.org/wiki/9th_millennium_BC
+-7900,150,event,Europe,"Mount Sandel: the first people in Ireland",https://en.wikipedia.org/wiki/8th_millennium_BC
+-7750,250,state,Middle East,Sheep and goats are domesticated,https://en.wikipedia.org/wiki/7th_millennium_BC
+-7600,100,event,Europe,"A round-house is built at Howick, England",https://en.wikipedia.org/wiki/8th_millennium_BC
+-7560,100,event,Oceania,"Rotoma Caldera, New Zealand, erupts",https://en.wikipedia.org/wiki/8th_millennium_BC
+-7460,100,event,Asia,"Pinatubo, Philippines, erupts",https://en.wikipedia.org/wiki/8th_millennium_BC
+-7400,200,event,Middle East,"Çatalhöyük, Anatolia: an early proto-city",https://en.wikipedia.org/wiki/%C3%87atalh%C3%B6y%C3%BCk
+-7200,300,event,Middle East,'Ain Ghazal's plaster statues are made,https://en.wikipedia.org/wiki/Ayn_Ghazal_statues
+-7000,200,event,Asia,"Mehrgarh, Pakistan: farming villages",https://en.wikipedia.org/wiki/7th_millennium_BC
+-6857,0,event,Global,Jupiter passes in front of Saturn,https://en.wikipedia.org/wiki/7th_millennium_BC
+-6800,200,event,Europe,Pigs are domesticated in eastern Europe,https://en.wikipedia.org/wiki/7th_millennium_BC
+-6600,600,event,Asia,"Jiahu, China: bone flutes and early signs",https://en.wikipedia.org/wiki/Jiahu
+-6500,200,event,Middle East,The Ubaid period begins in Mesopotamia,https://en.wikipedia.org/wiki/7th_millennium_BC
+-6400,300,state,Europe,Doggerland slowly drowns under the North Sea,https://en.wikipedia.org/wiki/7th_millennium_BC
+-6236,20,event,Global,"The 8.2-kiloyear cold snap, a sudden chill",https://en.wikipedia.org/wiki/7th_millennium_BC
+-6200,100,event,Europe,Farmers from the Middle East reach the Danube,https://en.wikipedia.org/wiki/7th_millennium_BC
+-6100,100,event,Europe,Great Britain becomes an island,https://en.wikipedia.org/wiki/7th_millennium_BC
+-6000,300,event,Oceania,"Lake Condah, Australia: stone eel traps",https://en.wikipedia.org/wiki/6th_millennium_BC
+-5980,100,event,Asia,"Near Tbilisi, Georgia: the oldest known wine",https://en.wikipedia.org/wiki/6th_millennium_BC
+-5900,100,event,Europe,People first settle Malta,https://en.wikipedia.org/wiki/6th_millennium_BC
+-5700,400,state,Middle East,Halaf pottery spreads across Mesopotamia,https://en.wikipedia.org/wiki/Halaf_culture
+-5500,200,event,Asia,Chickens are domesticated in Southeast Asia,https://en.wikipedia.org/wiki/6th_millennium_BC
+-5480,20,event,Global,Tree rings record a burst of solar activity,https://en.wikipedia.org/wiki/6th_millennium_BC
+-5400,200,event,Middle East,"Eridu, one of the first cities, is founded",https://en.wikipedia.org/wiki/Eridu
+-5200,300,state,Europe,Linear Pottery farmers spread across Europe,https://en.wikipedia.org/wiki/Linear_Pottery_culture
+-5050,100,event,Americas,"Chinchorro, Chile: the oldest mummies",https://en.wikipedia.org/wiki/Chinchorro_mummies
+-5000,200,event,Africa,North Africa's Maghreb becomes Neolithic,https://en.wikipedia.org/wiki/5th_millennium_BC
+-4800,200,event,Europe,Cucuteni–Trypillia farming towns begin,https://en.wikipedia.org/wiki/5th_millennium_BC
+-4600,150,event,Europe,"Varna, Bulgaria: the oldest worked gold",https://en.wikipedia.org/wiki/Varna_Necropolis
+-4500,200,event,Europe,"Carnac, Brittany: thousands of standing stones",https://en.wikipedia.org/wiki/Carnac_stones
+-4300,250,state,Africa,Saharan hunters take up cattle herding,https://en.wikipedia.org/wiki/5th_millennium_BC
+-4200,200,event,Americas,Andean chiefdoms rise (Lauricocha III),https://en.wikipedia.org/wiki/5th_millennium_BC
+-4130,100,event,Asia,"Toggling harpoons are invented, Siberia",https://en.wikipedia.org/wiki/5th_millennium_BC
+-4000,200,event,Americas,Southeastern Woodlands peoples build shell mounds,https://en.wikipedia.org/wiki/5th_millennium_BC
+-3800,100,event,Middle East,"Tell Brak, Syria: mass graves of early war",https://en.wikipedia.org/wiki/4th_millennium_BC
+-3600,100,event,Europe,"Ġgantija, Malta: temples older than the pyramids",https://en.wikipedia.org/wiki/4th_millennium_BC
+-3500,200,event,Americas,"Huaricanga, Peru: the oldest city in the Americas",https://en.wikipedia.org/wiki/3rd_millennium_BC
+-3300,100,event,Africa,Egyptians domesticate the donkey,https://en.wikipedia.org/wiki/4th_millennium_BC
+-3230,120,event,Europe,"Ötzi the Iceman dies in the Alps",https://en.wikipedia.org/wiki/%C3%96tzi
+-3200,100,event,Middle East,Sumerians begin writing in cuneiform,https://en.wikipedia.org/wiki/Cuneiform
+-3138,50,event,Europe,"Ljubljana Marshes: the oldest wooden wheel",https://en.wikipedia.org/wiki/4th_millennium_BC
+-3090,100,event,Africa,Narmer unifies Upper and Lower Egypt,https://en.wikipedia.org/wiki/4th_millennium_BC
+-3000,100,event,Europe,Stonehenge's first circle is dug,https://en.wikipedia.org/wiki/Stonehenge
+-2900,100,event,Middle East,Sumer's Early Dynastic city-states,https://en.wikipedia.org/wiki/3rd_millennium_BC
+-2700,100,event,Americas,"Methuselah, a bristlecone pine, sprouts",https://en.wikipedia.org/wiki/3rd_millennium_BC
+-2600,100,event,Asia,The Indus Valley Civilisation unites,https://en.wikipedia.org/wiki/3rd_millennium_BC
+-2600,30,event,Africa,The Great Pyramid of Giza is built,https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza
+-2500,100,event,Asia,Austronesians from Taiwan settle Luzon,https://en.wikipedia.org/wiki/3rd_millennium_BC
+-2334,30,event,Middle East,"Sargon of Akkad builds the first empire",https://en.wikipedia.org/wiki/3rd_millennium_BC
+-2250,50,event,Global,The 4.2-kiloyear megadrought begins,https://en.wikipedia.org/wiki/Meghalayan
+-2181,30,event,Africa,Egypt's Old Kingdom collapses,https://en.wikipedia.org/wiki/3rd_millennium_BC
+-2000,100,event,Asia,"Wrangel Island: the last woolly mammoths",https://en.wikipedia.org/wiki/Woolly_mammoth
+-1900,100,event,Asia,The Indus cities decline,https://en.wikipedia.org/wiki/3rd_millennium_BC
+-1754,10,event,Middle East,Hammurabi's law code is carved,https://en.wikipedia.org/wiki/Code_of_Hammurabi
+-1627,50,event,Europe,"The Minoan eruption of Thera, Greece",https://en.wikipedia.org/wiki/2nd_millennium_BC
+-1600,50,event,Asia,The Shang dynasty rises in China,https://en.wikipedia.org/wiki/Shang_dynasty
+-1500,100,event,Africa,The Bantu expansion spreads across Africa,https://en.wikipedia.org/wiki/2nd_millennium_BC
+-1323,5,event,Africa,Tutankhamun dies,https://en.wikipedia.org/wiki/Tutankhamun
+-1269,5,event,Middle East,Egypt and the Hittites sign a peace treaty,https://en.wikipedia.org/wiki/2nd_millennium_BC
+-1200,100,event,Americas,The Olmec civilisation rises in Mexico,https://en.wikipedia.org/wiki/Olmecs
+-1177,20,event,Middle East,The Late Bronze Age collapse,https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse
+-1045,5,event,Asia,The Zhou dynasty is founded,https://en.wikipedia.org/wiki/2nd_millennium_BC
+-850,100,event,Oceania,"Lapita voyagers reach Fiji, Tonga and Samoa",https://en.wikipedia.org/wiki/Lapita_culture
+-814,10,event,Africa,Carthage is founded,https://en.wikipedia.org/wiki/1st_millennium_BC
+-776,0,event,Europe,The first recorded Olympic Games,https://en.wikipedia.org/wiki/1st_millennium_BC
+-753,0,event,Europe,"Rome is founded, by tradition",https://en.wikipedia.org/wiki/1st_millennium_BC
+-671,0,event,Africa,Assyria conquers Egypt,https://en.wikipedia.org/wiki/1st_millennium_BC
+-539,0,event,Middle East,Cyrus the Great takes Babylon,https://en.wikipedia.org/wiki/1st_millennium_BC
+-509,0,event,Europe,The Roman Republic is founded,https://en.wikipedia.org/wiki/1st_millennium_BC
+-500,200,event,Africa,"Nok culture, Nigeria: iron and terracottas",https://en.wikipedia.org/wiki/Nok_culture
+-486,0,event,Asia,China's Grand Canal is begun,https://en.wikipedia.org/wiki/1st_millennium_BC
+-479,0,event,Asia,Confucius dies,https://en.wikipedia.org/wiki/1st_millennium_BC
+-431,0,event,Europe,The Peloponnesian War begins,https://en.wikipedia.org/wiki/1st_millennium_BC
+-323,0,event,Middle East,Alexander the Great dies in Babylon,https://en.wikipedia.org/wiki/Alexander_the_Great
+-261,0,event,Asia,"The Kalinga War; Ashoka turns to Buddhism",https://en.wikipedia.org/wiki/1st_millennium_BC
+-218,0,event,Europe,Hannibal crosses the Alps,https://en.wikipedia.org/wiki/Hannibal
+-206,0,event,Asia,The Han dynasty begins,https://en.wikipedia.org/wiki/1st_millennium_BC
+-146,0,event,Africa,Rome destroys Carthage,https://en.wikipedia.org/wiki/1st_millennium_BC
+-100,50,event,Americas,"Teotihuacan, Mexico, begins to grow",https://en.wikipedia.org/wiki/Teotihuacan
+-44,0,event,Europe,Julius Caesar is assassinated,https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar
+-27,0,event,Europe,Augustus becomes the first Roman emperor,https://en.wikipedia.org/wiki/Augustus
+9,0,event,Europe,Germanic tribes destroy 3 legions at Teutoburg,https://en.wikipedia.org/wiki/Battle_of_the_Teutoburg_Forest
+30,3,event,Middle East,"Jesus of Nazareth is crucified, about 30-33",https://en.wikipedia.org/wiki/Crucifixion_of_Jesus
+43,0,event,Europe,Rome invades Britain,https://en.wikipedia.org/wiki/Roman_conquest_of_Britain
+79,0,event,Europe,Vesuvius buries Pompeii,https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD
+105,0,event,Asia,Cai Lun improves papermaking in China,https://en.wikipedia.org/wiki/Cai_Lun
+122,0,event,Europe,Hadrian's Wall is begun,https://en.wikipedia.org/wiki/Hadrian%27s_Wall
+150,10,event,Africa,"Ptolemy writes the Almagest, Alexandria",https://en.wikipedia.org/wiki/Almagest
+184,0,event,Asia,The Yellow Turban Rebellion shakes Han China,https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion
+220,0,event,Asia,The Han dynasty ends,https://en.wikipedia.org/wiki/Han_dynasty
+250,0,event,Americas,The Maya Classic period begins,https://en.wikipedia.org/wiki/Maya_civilization
+280,0,event,Asia,The Jin dynasty reunites China,https://en.wikipedia.org/wiki/Jin_dynasty_(266%E2%80%93420)
+320,0,event,Asia,The Gupta Empire is founded in India,https://en.wikipedia.org/wiki/Gupta_Empire
+330,0,event,Europe,Constantinople becomes Rome's new capital,https://en.wikipedia.org/wiki/Constantinople
+340,10,event,Africa,King Ezana makes Aksum Christian,https://en.wikipedia.org/wiki/Ezana_of_Axum
+378,0,event,Europe,The Goths defeat Rome at Adrianople,https://en.wikipedia.org/wiki/Battle_of_Adrianople
+410,0,event,Europe,The Visigoths sack Rome,https://en.wikipedia.org/wiki/Sack_of_Rome_(410)
+439,0,event,Africa,The Vandals take Carthage,https://en.wikipedia.org/wiki/Vandals
+476,0,event,Europe,The Western Roman Empire falls,https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire
+495,0,event,Asia,The Shaolin Monastery is founded,https://en.wikipedia.org/wiki/Shaolin_Monastery
+537,0,event,Europe,Hagia Sophia is completed,https://en.wikipedia.org/wiki/Hagia_Sophia
+541,0,event,Global,The Plague of Justinian,https://en.wikipedia.org/wiki/Plague_of_Justinian
+570,3,event,Middle East,"Muhammad is born in Mecca, about 570",https://en.wikipedia.org/wiki/Muhammad
+589,0,event,Asia,The Sui dynasty reunites China,https://en.wikipedia.org/wiki/Sui_dynasty
+622,0,event,Middle East,"The Hijra, year 1 of the Islamic calendar",https://en.wikipedia.org/wiki/Hijrah
+661,0,event,Middle East,The Umayyad Caliphate begins,https://en.wikipedia.org/wiki/Umayyad_Caliphate
+700,50,event,Americas,"Tikal, the great Maya city, at its height",https://en.wikipedia.org/wiki/Tikal
+711,0,event,Europe,The Umayyads cross into Spain,https://en.wikipedia.org/wiki/Umayyad_conquest_of_Hispania
+750,0,event,Middle East,The Abbasids take the caliphate,https://en.wikipedia.org/wiki/Abbasid_Revolution
+755,0,event,Asia,The An Lushan rebellion convulses Tang China,https://en.wikipedia.org/wiki/An_Lushan_rebellion
+794,0,event,Asia,"Kyoto becomes Japan's capital (Heian)",https://en.wikipedia.org/wiki/Heian_period
+800,0,event,Europe,Charlemagne is crowned emperor,https://en.wikipedia.org/wiki/Charlemagne
+830,10,event,Middle East,"Baghdad's House of Wisdom flourishes",https://en.wikipedia.org/wiki/House_of_Wisdom
+868,0,event,Asia,"The Diamond Sutra, oldest dated printed book",https://en.wikipedia.org/wiki/Diamond_Sutra
+900,50,event,Americas,Chaco Canyon's great houses rise,https://en.wikipedia.org/wiki/Chaco_Culture_National_Historical_Park
+907,0,event,Asia,The Tang dynasty falls,https://en.wikipedia.org/wiki/Tang_dynasty
+930,0,event,Europe,"Iceland's Althing, an early parliament, meets",https://en.wikipedia.org/wiki/Althing
+960,0,event,Asia,The Song dynasty is founded,https://en.wikipedia.org/wiki/Song_dynasty
+1000,10,event,Americas,Leif Erikson reaches North America,https://en.wikipedia.org/wiki/Leif_Erikson
+1010,5,event,Asia,The Tale of Genji is written,https://en.wikipedia.org/wiki/The_Tale_of_Genji
+1025,0,event,Asia,The Chola navy raids Srivijaya,https://en.wikipedia.org/wiki/Chola_invasion_of_Srivijaya
+1044,0,event,Asia,The first written formula for gunpowder,https://en.wikipedia.org/wiki/Wujing_Zongyao
+1050,25,event,Americas,"Cahokia grows into a city, Mississippi valley",https://en.wikipedia.org/wiki/Cahokia
+1054,0,event,Global,A supernova blazes; it leaves the Crab Nebula,https://en.wikipedia.org/wiki/SN_1054
+1066,0,event,Europe,The Normans conquer England,https://en.wikipedia.org/wiki/Norman_Conquest
+1077,0,event,Europe,Emperor Henry IV walks to Canossa,https://en.wikipedia.org/wiki/Road_to_Canossa
+1088,0,event,Europe,"The University of Bologna, the first",https://en.wikipedia.org/wiki/University_of_Bologna
+1099,0,event,Middle East,Crusaders take Jerusalem,https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1099)
+1113,0,event,Asia,Angkor Wat is begun,https://en.wikipedia.org/wiki/Angkor_Wat
+1127,0,event,Asia,Jurchens take Kaifeng; the Southern Song begins,https://en.wikipedia.org/wiki/Jingkang_incident
+1138,0,event,Middle East,"An earthquake devastates Aleppo",https://en.wikipedia.org/wiki/1138_Aleppo_earthquake
+1154,0,event,Europe,"Al-Idrisi's world map, made in Sicily",https://en.wikipedia.org/wiki/Tabula_Rogeriana
+1163,0,event,Europe,Notre-Dame de Paris is begun,https://en.wikipedia.org/wiki/Notre-Dame_de_Paris
+1169,0,event,Africa,Saladin takes power in Egypt,https://en.wikipedia.org/wiki/Saladin
+1187,0,event,Middle East,Saladin retakes Jerusalem,https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1187)
+1200,30,event,Americas,The Kingdom of Cusco is founded,https://en.wikipedia.org/wiki/Kingdom_of_Cusco
+1206,0,event,Asia,Genghis Khan unites the Mongols,https://en.wikipedia.org/wiki/Genghis_Khan
+1215,0,event,Europe,Magna Carta is sealed,https://en.wikipedia.org/wiki/Magna_Carta
+1235,0,event,Africa,Sundiata founds the Mali Empire,https://en.wikipedia.org/wiki/Mali_Empire
+1250,0,event,Africa,The Mamluks seize power in Egypt,https://en.wikipedia.org/wiki/Mamluk_Sultanate
+1258,0,event,Middle East,The Mongols sack Baghdad,https://en.wikipedia.org/wiki/Siege_of_Baghdad_(1258)
+1271,0,event,Asia,Marco Polo sets out for China,https://en.wikipedia.org/wiki/Marco_Polo
+1280,30,event,Oceania,Polynesians settle New Zealand,https://en.wikipedia.org/wiki/History_of_New_Zealand
+1299,0,event,Middle East,The Ottoman state is founded,https://en.wikipedia.org/wiki/Ottoman_Empire
+1312,8,event,Africa,Mansa Musa becomes ruler of Mali,https://en.wikipedia.org/wiki/Mansa_Musa
+1325,0,event,Americas,The Mexica found Tenochtitlan,https://en.wikipedia.org/wiki/Tenochtitlan
+1337,0,event,Europe,The Hundred Years' War begins,https://en.wikipedia.org/wiki/Hundred_Years%27_War
+1347,0,event,Europe,The Black Death reaches Europe,https://en.wikipedia.org/wiki/Black_Death
+1368,0,event,Asia,The Ming dynasty is founded,https://en.wikipedia.org/wiki/Ming_dynasty
+1381,0,event,Europe,The Peasants' Revolt in England,https://en.wikipedia.org/wiki/Peasants%27_Revolt
+1398,0,event,Asia,Timur sacks Delhi,https://en.wikipedia.org/wiki/Timur
+1405,0,event,Asia,Zheng He's treasure fleet sails,https://en.wikipedia.org/wiki/Zheng_He
+1415,0,event,Africa,Portugal takes Ceuta,https://en.wikipedia.org/wiki/Conquest_of_Ceuta
+1428,0,event,Americas,The Aztec Triple Alliance forms,https://en.wikipedia.org/wiki/Aztec_Triple_Alliance
+1438,0,event,Americas,Pachacuti begins the Inca Empire,https://en.wikipedia.org/wiki/Pachacuti
+1450,5,event,Europe,Gutenberg's printing press,https://en.wikipedia.org/wiki/Printing_press
+1453,0,event,Europe,The Ottomans take Constantinople,https://en.wikipedia.org/wiki/Fall_of_Constantinople
+1468,0,event,Africa,Songhai takes Timbuktu,https://en.wikipedia.org/wiki/Songhai_Empire
+1488,0,event,Africa,Dias sails round the Cape of Good Hope,https://en.wikipedia.org/wiki/Bartolomeu_Dias
+1492,0,event,Americas,Columbus reaches the Caribbean,https://en.wikipedia.org/wiki/Voyages_of_Christopher_Columbus
+1498,0,event,Asia,Vasco da Gama reaches India by sea,https://en.wikipedia.org/wiki/Vasco_da_Gama
+1517,0,event,Europe,Luther's 95 Theses: the Reformation,https://en.wikipedia.org/wiki/Ninety-five_Theses
+1521,0,event,Americas,Tenochtitlan falls to the Spanish,https://en.wikipedia.org/wiki/Fall_of_Tenochtitlan
+1522,0,event,Global,Magellan's expedition sails round the world,https://en.wikipedia.org/wiki/Magellan_expedition
+1526,0,event,Asia,Babur founds the Mughal Empire,https://en.wikipedia.org/wiki/Mughal_Empire
+1543,0,event,Europe,Copernicus puts the Sun at the centre,https://en.wikipedia.org/wiki/De_revolutionibus_orbium_coelestium
+1556,0,event,Asia,The Shaanxi earthquake: the deadliest known,https://en.wikipedia.org/wiki/1556_Shaanxi_earthquake
+1571,0,event,Europe,The Battle of Lepanto,https://en.wikipedia.org/wiki/Battle_of_Lepanto
+1590,0,event,Asia,Toyotomi Hideyoshi unites Japan,https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi
+1607,0,event,Americas,Jamestown is founded in Virginia,https://en.wikipedia.org/wiki/Jamestown,_Virginia
+1610,0,event,Europe,Galileo sees the moons of Jupiter,https://en.wikipedia.org/wiki/Sidereus_Nuncius
+1620,0,event,Americas,The Mayflower lands at Plymouth,https://en.wikipedia.org/wiki/Mayflower
+1632,0,event,Asia,The Taj Mahal is begun,https://en.wikipedia.org/wiki/Taj_Mahal
+1644,0,event,Asia,The Qing dynasty takes Beijing,https://en.wikipedia.org/wiki/Qing_dynasty
+1652,0,event,Africa,The Dutch found Cape Town,https://en.wikipedia.org/wiki/Cape_Town
+1666,0,event,Europe,"Newton's year of wonders: light, gravity",https://en.wikipedia.org/wiki/Annus_mirabilis
+1687,0,event,Europe,Newton publishes the Principia,https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica
+1700,0,event,Americas,The Cascadia earthquake and tsunami,https://en.wikipedia.org/wiki/1700_Cascadia_earthquake
+1712,0,event,Europe,Newcomen's steam engine,https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine
+1722,0,event,Oceania,Europeans reach Rapa Nui (Easter Island),https://en.wikipedia.org/wiki/Easter_Island
+1735,0,event,Americas,An expedition measures Earth's shape in Peru,https://en.wikipedia.org/wiki/French_Geodesic_Mission
+1747,0,event,Asia,Ahmad Shah Durrani founds Afghanistan,https://en.wikipedia.org/wiki/Durrani_Empire
+1755,0,event,Europe,The Lisbon earthquake,https://en.wikipedia.org/wiki/1755_Lisbon_earthquake
+1770,0,event,Oceania,Cook charts Australia's east coast,https://en.wikipedia.org/wiki/James_Cook
+1776,0,event,Americas,The US Declaration of Independence,https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence
+1789,0,event,Europe,The French Revolution,https://en.wikipedia.org/wiki/French_Revolution
+1791,0,event,Americas,The Haitian Revolution begins,https://en.wikipedia.org/wiki/Haitian_Revolution
+1807,0,event,Africa,Britain bans the Atlantic slave trade,https://en.wikipedia.org/wiki/Slave_Trade_Act_1807
+1815,0,event,Asia,"Tambora erupts; a year without a summer",https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora
+1825,0,event,Europe,The first public steam railway,https://en.wikipedia.org/wiki/Stockton_and_Darlington_Railway
+1839,0,event,Asia,The First Opium War begins,https://en.wikipedia.org/wiki/First_Opium_War
+1848,0,event,Europe,Revolutions sweep Europe,https://en.wikipedia.org/wiki/Revolutions_of_1848
+1859,0,event,Europe,Darwin's On the Origin of Species,https://en.wikipedia.org/wiki/On_the_Origin_of_Species
+1868,0,event,Asia,Japan's Meiji Restoration,https://en.wikipedia.org/wiki/Meiji_Restoration
+1869,0,event,Africa,The Suez Canal opens,https://en.wikipedia.org/wiki/Suez_Canal
+1876,0,event,Americas,Bell patents the telephone,https://en.wikipedia.org/wiki/Alexander_Graham_Bell
+1884,0,event,Africa,The Berlin Conference carves up Africa,https://en.wikipedia.org/wiki/Berlin_Conference
+1896,0,event,Africa,Ethiopia defeats Italy at Adwa,https://en.wikipedia.org/wiki/Battle_of_Adwa
+1903,0,event,Americas,The Wright brothers fly,https://en.wikipedia.org/wiki/Wright_brothers
+1914,0,event,Global,The First World War begins,https://en.wikipedia.org/wiki/World_War_I
+1918,0,event,Global,The influenza pandemic,https://en.wikipedia.org/wiki/1918_flu_pandemic
+1929,0,event,Global,The Great Depression begins,https://en.wikipedia.org/wiki/Great_Depression
+1939,0,event,Global,The Second World War begins,https://en.wikipedia.org/wiki/World_War_II
+1945,0,event,Asia,Atomic bombs destroy Hiroshima and Nagasaki,https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki
+1947,0,event,Asia,India and Pakistan become independent,https://en.wikipedia.org/wiki/Partition_of_India
+1957,0,event,Global,Sputnik 1 reaches orbit,https://en.wikipedia.org/wiki/Sputnik_1
+1960,0,event,Africa,"The Year of Africa: 17 nations independent",https://en.wikipedia.org/wiki/Year_of_Africa
+1969,0,event,Global,Apollo 11 lands on the Moon,https://en.wikipedia.org/wiki/Apollo_11
+1989,0,event,Europe,The Berlin Wall falls,https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall
+1991,0,event,Global,The World Wide Web goes public,https://en.wikipedia.org/wiki/World_Wide_Web
+1994,0,event,Africa,Nelson Mandela is elected president,https://en.wikipedia.org/wiki/Nelson_Mandela
+2004,0,event,Asia,The Indian Ocean tsunami,https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami
+2008,0,event,Global,The global financial crisis,https://en.wikipedia.org/wiki/2008_financial_crisis
+2015,0,event,Global,The Paris climate agreement,https://en.wikipedia.org/wiki/Paris_Agreement
+2020,0,event,Global,The COVID-19 pandemic,https://en.wikipedia.org/wiki/COVID-19_pandemic

@@ -20,9 +20,11 @@ from pathlib import Path
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parent.parent
-EVENTS = ROOT / "data" / "deep_time" / "events.csv"
+DATASETS = {
+    "deep_time": (ROOT / "data" / "deep_time" / "events.csv", ROOT / ".tmp" / "source_report.md"),
+    "history": (ROOT / "data" / "history" / "events.csv", ROOT / ".tmp" / "source_report_history.md"),
+}
 CACHE = ROOT / ".tmp" / "sources"
-REPORT = ROOT / ".tmp" / "source_report.md"
 UA = {"User-Agent": "since-then-source-check/1.0 (Globe & Atlas; github.com/globe-and-atlas)"}
 
 NUM = r"(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)"
@@ -106,30 +108,53 @@ def ages_in(text: str) -> list[tuple[float, str]]:
     return found
 
 
+def years_in(text: str, bc: bool) -> list[tuple[float, str]]:
+    """Calendar years stated in the text: 'N BC' (and 'N–M BC' ranges) when bc, else bare years."""
+    found = []
+    pattern = (r"(\d{1,2},\d{3}|\d{1,5})(?:\s*[–-]\s*(\d{1,2},\d{3}|\d{1,5}))?\s*(?:BC|BCE|B\.C\.)\b" if bc
+               else r"(?<![\d.])(?<!\d,)(\d{1,4})(?!\d|,\d)")
+    for m in re.finditer(pattern, text):
+        lo, hi = max(0, m.start() - 90), min(len(text), m.end() + 60)
+        for g in m.groups():
+            if g:
+                found.append((float(g.replace(",", "")), " ".join(text[lo:hi].split())))
+    return found
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dry-run", action="store_true", help="list rows without fetching")
+    ap.add_argument("--data", choices=sorted(DATASETS), default="deep_time", help="which events.csv to check")
     args = ap.parse_args()
+    EVENTS, REPORT = DATASETS[args.data]
+    history = args.data == "history"
     with EVENTS.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     if args.dry_run:
         print(f"{len(rows)} rows to check")
         return
-    lines = ["# Source check", "", "| # | age Ma | status | label | source |", "|---|---|---|---|---|"]
+    lines = ["# Source check", "", "| # | when | status | label | source |", "|---|---|---|---|---|"]
     detail = []
     counts: dict[str, int] = {}
     for i, row in enumerate(rows, start=2):
-        age, unc = float(row["age_ma"]), float(row["uncertainty_ma"] or 0)
-        tol = max(unc, age * 0.05)
         status, text = source_text(row["source"])
-        hits = [(a, s) for a, s in ages_in(text) if abs(a - age) <= tol] if status == "OK" else []
+        if history:
+            year, unc = int(row["year"]), float(row["uncertainty_years"] or 0)
+            age, tol = float(abs(year)), max(unc, 1.0)
+            stated = years_in(text, year < 0)
+        else:
+            age, unc = float(row["age_ma"]), float(row["uncertainty_ma"] or 0)
+            tol = max(unc, age * 0.05)
+            stated = ages_in(text)
+        hits = [(a, s) for a, s in stated if abs(a - age) <= tol] if status == "OK" else []
         verdict = "MATCH" if hits else ("CHECK" if status == "OK" else status)
         counts[verdict] = counts.get(verdict, 0) + 1
-        lines.append(f"| {i} | {row['age_ma']} | {verdict} | {row['label']} | {row['source']} |")
+        when = row["year"] if history else row["age_ma"]
+        lines.append(f"| {i} | {when} | {verdict} | {row['label']} | {row['source']} |")
         if verdict != "MATCH":
-            near = sorted(ages_in(text), key=lambda h: abs(h[0] - age))[:3]
+            near = sorted(stated, key=lambda h: abs(h[0] - age))[:3]
             head = text.split("\n", 1)[0][:160]
-            detail.append(f"## Row {i}: {row['label']} ({row['age_ma']} ± {row['uncertainty_ma']} Ma)\n"
+            detail.append(f"## Row {i}: {row['label']} ({when} ± {unc:g})\n"
                           f"- source: {row['source']} — {status}; {head}\n"
                           + "".join(f"- nearest: {a:g} Ma — …{s}…\n" for a, s in near))
         else:

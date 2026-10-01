@@ -140,3 +140,59 @@ Process:
 - **The last second is crowded.** Four events are younger than one clock second (52,546 years): Out of Africa, the LGM, the Holocene and writing. All share 23:59:59 or 23:59:58, so the watch can show only the latest. Open design question: rotate them within the final second, or show a "last second" list.
 - **The label width check is approximate** (a conservative per-character table for GOTHIC_18). The emulator screenshot is the real check.
 - **Results:** 74 units, 110 events, `deep_time.bin` 9,818 bytes, deterministic; pytest 21 passed.
+
+## Historical lenses — 2026-09-30 (owner decision: build now)
+The owner overrode the 7-day wrist gate on 2026-09-30: the Holocene, Common Era and Second Millennium lenses ship with Deep Time.
+
+**Data model.**
+- One file, `data/history/events.csv`: `year` (historical, no year 0, negative = BC), `uncertainty_years`, `kind`, `region`, `label`, `source`.
+- Each lens takes the events inside its span. The Second Millennium is a subset of the Common Era, which is a subset of the Holocene.
+
+| Lens | Start | 30 clock min ≈ |
+|---|---|---|
+| Holocene | 9700 BC (astronomical −9699; 11,700 years before 2000 CE) | 244 years |
+| Common Era | 1 CE | 42 years |
+| Second Millennium | 1001 CE | 21 years |
+
+**Mapping.**
+- The span is [start, now], where now is the watch's fractional current year.
+- `year(t) = start + (now − start) × t / 86400`.
+- The watch converts each event's year to a clock time itself, so the face never goes stale as years pass.
+
+**Watch.**
+- A lens setting (the first `src/pkjs` and Clay page) picks Deep Time, Holocene, Common Era or Second Millennium.
+- Holocene band: the ICS Holocene ages (Greenlandian to 6236 BC, Northgrippian to 2250 BC, Meghalayan), computed in C.
+- Common Era and Second Millennium band: the century ("12th century").
+- Approximate events show "c." before the year.
+
+**Tools.**
+
+| Script | Purpose |
+|---|---|
+| `execution/build_history.py` | Validate `data/history/events.csv` per lens and write `watchface/resources/history.bin` |
+| `execution/verify_sources.py --data history` | Check each row's year against its cited source |
+
+**Validation contract (historical lenses):**
+- [ ] No row has year 0 (unit test).
+- [ ] 9700 BC maps to 00:00 in the Holocene lens (unit test).
+- [ ] 1013 CE maps to 12:00 ± 1 min in the Common Era lens (reference present 2026) (unit test).
+- [ ] 1513 CE maps to 12:00 ± 1 min in the Second Millennium lens (unit test).
+- [ ] The present maps to 24:00 in every lens (unit test).
+- [ ] Every row has an https source.
+- [ ] Every row has a region from: Global, Africa, Americas, Asia, Europe, Middle East, Oceania.
+- [ ] In each lens, no gap between consecutive events (or between an end and the nearest event) exceeds 30 clock minutes at the reference present.
+- [ ] In each lens, no single region holds more than 40% of the events.
+- [ ] In each lens, Africa, Americas, Asia, Europe and the Middle East each have at least 3 events.
+- [ ] In each lens, Oceania has at least 2 events.
+- [ ] Every label fits two lines (same width check as Deep Time).
+- [ ] `history.bin` is under 24 KB.
+- [ ] The build is deterministic: two runs give byte-identical output.
+- [ ] Every row's year is confirmed against its source by `verify_sources.py --data history`, or by a hand verdict recorded in `knowledge/domain/history_sources.md`.
+- [ ] Each rule test also rejects a deliberately broken dataset (Popper's shield).
+- [ ] The emulator shows each lens at 12:00 with a plausible year and event (screenshots inspected).
+- [ ] Switching the lens in settings changes the face within one minute (emulator).
+
+## Learnings — 2026-09-30 (historical data)
+- **Wikipedia's millennium pages (10th to 1st millennium BC) are good sources** for prehistoric dates. Each page states "c. N BC" for its events, so the source check can confirm the dates directly.
+- **The Second Millennium's 21-year gap rule is the tightest.** The 11th–13th centuries needed extra events (Canossa 1077, Kaifeng 1127, Saladin 1169, the Mamluks 1250).
+- **Result:** 228 events. Holocene 228, Common Era 134, Second Millennium 96. Europe is at most 26% of any lens. `history.bin` is 15,578 bytes. pytest 38 passed.

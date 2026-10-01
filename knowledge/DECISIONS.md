@@ -21,3 +21,7 @@
 - **Decision:** Store name **Since Then**, tagline "All in a day". The repo stays `epoch-watch`.
 - **Alternatives:** Deep Time (free on Pebble, but crowded elsewhere: DeepTime for Geology, Deep Time Walk); All in a Day (clearest description; kept as the tagline); From Then, Long Story Short, All This Time (all free on the Pebble store).
 - **Reason:** It pairs with From Here in the Globe & Atlas set, fits every lens (Earth, Holocene, Common Era, the year 1000), and no store title uses it. Put "deep time" in the description for search.
+
+## 2026-09-30 — Historical lenses now, not after the gate
+- **Decision:** Holocene, Common Era and Second Millennium are built alongside Deep Time. Owner's call, overriding the 7-day wrist gate.
+- **Design:** one shared `history.csv` filtered by span; the watch maps years to clock time using the real date; gap rule ≤ 30 clock minutes per lens; regional balance (no region over 40%; every region represented).
