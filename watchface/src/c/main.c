@@ -23,7 +23,7 @@
 
 enum { LENS_DEEP, LENS_HOLOCENE, LENS_CE, LENS_2M, LENS_COUNT };
 enum { RANK_EON, RANK_ERA, RANK_PERIOD, RANK_EPOCH };
-enum { PERSIST_LENS = 1 };
+enum { PERSIST_LENS = 1, PERSIST_TIME_COLOR = 2 };
 
 static const char *LENS_TITLES[LENS_COUNT] = {"DEEP TIME", "HOLOCENE", "COMMON ERA", "2ND MILLENNIUM"};
 
@@ -32,6 +32,7 @@ static Layer *s_canvas;
 static const uint8_t *s_deep, *s_hist;
 static int s_deep_units, s_deep_events, s_hist_lenses, s_hist_events;
 static int s_lens = LENS_DEEP;
+static int s_time_hex = 0xFFFFFF; /* time digits, 0xRRGGBB from the settings colour picker */
 static bool s_seconds;
 static AppTimer *s_rotate_timer;
 static int s_rot;
@@ -254,7 +255,7 @@ static void canvas_update(Layer *layer, GContext *ctx) {
   char time_text[16];
   if (s_seconds) snprintf(time_text, sizeof(time_text), "%02d:%02d:%02d", tod / 3600, tod / 60 % 60, tod % 60);
   else snprintf(time_text, sizeof(time_text), "%02d:%02d", tod / 3600, tod / 60 % 60);
-  graphics_context_set_text_color(ctx, GColorWhite);
+  graphics_context_set_text_color(ctx, GColorFromHEX(s_time_hex));
   graphics_draw_text(ctx, time_text, fonts_get_system_font(FONT_KEY_LECO_26_BOLD_NUMBERS_AM_PM), GRect(6, 2, 130, 30), GTextOverflowModeFill, GTextAlignmentLeft, NULL);
   graphics_context_set_text_color(ctx, GColorLightGray);
   graphics_draw_text(ctx, LENS_TITLES[s_lens], small, GRect(100, 10, 96, 16), GTextOverflowModeTrailingEllipsis, GTextAlignmentRight, NULL);
@@ -397,18 +398,27 @@ static void ticked(struct tm *t, TimeUnits changed) { refresh(); }
 
 /* ---------------- settings ---------------- */
 
+/* A settings value as an int: Clay sends selects as strings and colours as ints of any width. */
+static bool tuple_int(Tuple *t, int *out) {
+  if (!t) return false;
+  if (t->type == TUPLE_CSTRING) *out = atoi(t->value->cstring);
+  else if (t->length == 1) *out = t->type == TUPLE_INT ? t->value->int8 : t->value->uint8;
+  else if (t->length == 2) *out = t->type == TUPLE_INT ? t->value->int16 : t->value->uint16;
+  else if (t->length == 4) *out = t->type == TUPLE_INT ? (int)t->value->int32 : (int)t->value->uint32;
+  else return false;
+  return true;
+}
+
 static void inbox(DictionaryIterator *iter, void *context) {
-  Tuple *t = dict_find(iter, MESSAGE_KEY_Setting_Lens);
-  if (!t) return;
-  int lens;
-  if (t->type == TUPLE_CSTRING) lens = atoi(t->value->cstring);
-  else if (t->length == 1) lens = t->type == TUPLE_INT ? t->value->int8 : t->value->uint8;
-  else if (t->length == 2) lens = t->type == TUPLE_INT ? t->value->int16 : t->value->uint16;
-  else if (t->length == 4) lens = t->type == TUPLE_INT ? (int)t->value->int32 : (int)t->value->uint32;
-  else return;
-  if (lens < 0 || lens >= LENS_COUNT) return;
-  s_lens = lens;
-  persist_write_int(PERSIST_LENS, s_lens);
+  int v;
+  if (tuple_int(dict_find(iter, MESSAGE_KEY_Setting_TimeColor), &v) && v >= 0 && v <= 0xFFFFFF) {
+    s_time_hex = v;
+    persist_write_int(PERSIST_TIME_COLOR, s_time_hex);
+  }
+  if (tuple_int(dict_find(iter, MESSAGE_KEY_Setting_Lens), &v) && v >= 0 && v < LENS_COUNT) {
+    s_lens = v;
+    persist_write_int(PERSIST_LENS, s_lens);
+  }
   refresh();
 }
 
@@ -426,6 +436,7 @@ static void window_unload(Window *window) { layer_destroy(s_canvas); }
 static void init(void) {
   if (persist_exists(PERSIST_LENS)) s_lens = persist_read_int(PERSIST_LENS);
   if (s_lens < 0 || s_lens >= LENS_COUNT) s_lens = LENS_DEEP;
+  if (persist_exists(PERSIST_TIME_COLOR)) s_time_hex = persist_read_int(PERSIST_TIME_COLOR) & 0xFFFFFF;
 #ifdef ST_TEST_LENS
   s_lens = ST_TEST_LENS;
 #endif

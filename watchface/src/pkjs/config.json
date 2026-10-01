@@ -20,6 +20,13 @@
       { "type": "text", "defaultValue": "In Deep Time the dinosaurs die at 23:39 and humans arrive six seconds before midnight. The face is always 24-hour: midnight to midnight is the span." }
     ]
   },
+  {
+    "type": "section",
+    "items": [
+      { "type": "heading", "defaultValue": "Display" },
+      { "type": "color", "messageKey": "Setting_TimeColor", "label": "Time digits colour", "defaultValue": "FFFFFF", "sunlight": false, "allowGray": true }
+    ]
+  },
   { "type": "text", "defaultValue": "A Globe & Atlas project. Geologic time: ICS International Chronostratigraphic Chart v2024-12 (Cohen et al.), CC BY 4.0. Event dates are checked against the sources listed at github.com/globe-and-atlas/since-then." },
   { "type": "submit", "defaultValue": "Save" }
 ]

@@ -24,7 +24,8 @@
       "watchface": true
     },
     "messageKeys": [
-      "Setting_Lens"
+      "Setting_Lens",
+      "Setting_TimeColor"
     ],
     "resources": {
       "media": []
