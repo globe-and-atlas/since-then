@@ -30,11 +30,11 @@ age_ma,uncertainty_ma,kind,label,source
 2960,20,event,First whiffs of free oxygen in Pongola soils,https://doi.org/10.1038/nature12426
 2900,50,event,"Pongola glaciation, the oldest known ice age",https://en.wikipedia.org/wiki/Pongola_glaciation
 2850,50,event,"Witwatersrand, the richest gold field, forms",https://en.wikipedia.org/wiki/Witwatersrand_Basin
-2800,50,event,Continents grow fast as cratons stabilise,https://en.wikipedia.org/wiki/Craton
-2750,50,event,Huge lava floods across early continents,https://en.wikipedia.org/wiki/Large_igneous_province
+2800,300,state,"Cratons, the old cores of continents, form",https://en.wikipedia.org/wiki/Craton
+2715,5,event,Ventersdorp lavas bury the Witwatersrand,https://en.wikipedia.org/wiki/Witwatersrand
 2700,30,event,Fossil raindrops record a thin atmosphere,https://doi.org/10.1038/nature10890
 2650,100,state,A methane haze may turn the sky orange,https://doi.org/10.1038/ngeo1425
-2600,100,state,Stromatolite reefs thrive in shallow seas,https://en.wikipedia.org/wiki/Stromatolite
+2600,100,state,Stromatolite reefs spread in shallow seas,https://en.wikipedia.org/wiki/Stromatolite
 2550,100,event,Superia and Sclavia cratons assemble,https://en.wikipedia.org/wiki/Kenorland
 2500,20,event,A whiff of oxygen in Australia's McRae Shale,https://doi.org/10.1126/science.1140325
 2460,10,event,"Hamersley, Australia: great banded iron beds",https://en.wikipedia.org/wiki/Banded_iron_formation
@@ -42,7 +42,7 @@ age_ma,uncertainty_ma,kind,label,source
 2330,10,event,"Sulfur signal vanishes: oxygen is here to stay",https://doi.org/10.1126/sciadv.1600134
 2290,100,event,"Huronian glaciation, perhaps a snowball Earth",https://en.wikipedia.org/wiki/Huronian_glaciation
 2220,20,event,Lomagundi event: the carbon cycle swings,https://en.wikipedia.org/wiki/Lomagundi-Jatuli_event
-2160,100,state,Rusty red beds show the air holds oxygen,https://en.wikipedia.org/wiki/Red_beds
+2160,100,state,Rusty red beds show the air holds oxygen,https://en.wikipedia.org/wiki/Great_Oxidation_Event
 2100,30,event,"Francevillian biota, Gabon: puzzling fossils",https://en.wikipedia.org/wiki/Francevillian_biota
 2023,4,event,"Vredefort: Earth's largest known crater",https://en.wikipedia.org/wiki/Vredefort_impact_structure
 1960,50,event,Trans-Hudson orogeny welds North America,https://en.wikipedia.org/wiki/Trans-Hudson_orogeny
@@ -50,7 +50,7 @@ age_ma,uncertainty_ma,kind,label,source
 1849,1,event,"Sudbury impact, Ontario: a nickel-rich crater",https://en.wikipedia.org/wiki/Sudbury_Basin
 1800,100,event,Columbia (Nuna) supercontinent assembled,https://en.wikipedia.org/wiki/Columbia_(supercontinent)
 1720,100,state,"The Boring Billion: stable, slow-changing seas",https://en.wikipedia.org/wiki/Boring_Billion
-1630,30,event,Oldest accepted multicellular eukaryotes,https://doi.org/10.1016/j.scib.2019.12.017
+1630,30,event,Oldest accepted multicellular eukaryotes,https://doi.org/10.1126/sciadv.adk3208
 1560,10,event,"Decimetre-scale seaweed-like fossils, China",https://doi.org/10.1038/ncomms11500
 1500,200,state,"Oceans: oxygen on top, sulfidic below",https://en.wikipedia.org/wiki/Canfield_ocean
 1460,20,event,Glacier National Park's oldest rocks settle,https://en.wikipedia.org/wiki/Belt_Supergroup
@@ -61,14 +61,14 @@ age_ma,uncertainty_ma,kind,label,source
 1109,5,event,Midcontinent Rift nearly splits North America,https://en.wikipedia.org/wiki/Midcontinent_Rift_System
 1047,13,event,Bangiomorpha: oldest known sexual reproduction,https://doi.org/10.1130/G39829.1
 1000,50,event,Rodinia supercontinent is assembled,https://en.wikipedia.org/wiki/Rodinia
-950,50,event,"Ourasphaira, Arctic Canada: earliest fungus?",https://doi.org/10.1038/s41586-019-1217-0
+950,60,event,"Ourasphaira, Arctic Canada: earliest fungus?",https://doi.org/10.1038/s41586-019-1217-0
 890,10,event,Possible sponge fabric in reef rock (disputed),https://doi.org/10.1038/s41586-021-03773-z
 800,50,event,Oxygen rises again in the Neoproterozoic,https://en.wikipedia.org/wiki/Neoproterozoic_Oxygenation_Event
 750,30,event,Rodinia begins to break apart,https://en.wikipedia.org/wiki/Rodinia
 717,1,event,Sturtian glaciation: ice reaches the equator,https://en.wikipedia.org/wiki/Sturtian_glaciation
 650,10,event,Marinoan glaciation: a second snowball Earth,https://en.wikipedia.org/wiki/Marinoan_glaciation
 575,5,event,"Avalon, Newfoundland: first large complex life",https://en.wikipedia.org/wiki/Ediacaran_biota
-558,1,event,Dickinsonia's cholesterol confirms an animal,https://doi.org/10.1126/science.aat7228
+558,15,event,Dickinsonia's cholesterol confirms an animal,https://doi.org/10.1126/science.aat7228
 538.8,0.6,event,Cambrian explosion: animal body plans appear,https://en.wikipedia.org/wiki/Cambrian_explosion
 521,2,event,Trilobites appear,https://en.wikipedia.org/wiki/Trilobite
 508,1,event,Burgess Shale animals are buried in mud,https://en.wikipedia.org/wiki/Burgess_Shale
@@ -76,7 +76,7 @@ age_ma,uncertainty_ma,kind,label,source
 445,2,event,Late Ordovician mass extinction,https://en.wikipedia.org/wiki/Late_Ordovician_mass_extinction
 430,5,event,Cooksonia: early plants with water-carrying stems,https://en.wikipedia.org/wiki/Cooksonia
 407,2,event,Rhynie chert preserves an early land ecosystem,https://en.wikipedia.org/wiki/Rhynie_chert
-385,5,event,"First forests grow, in what is now New York",https://en.wikipedia.org/wiki/Cairo_fossil_forest
+385,5,event,"First forests grow, in what is now New York",https://doi.org/10.1016/j.cub.2019.11.067
 375,5,event,Tiktaalik: a fish with a neck and wrists,https://en.wikipedia.org/wiki/Tiktaalik
 372,1,event,Late Devonian mass extinction,https://en.wikipedia.org/wiki/Late_Devonian_extinction
 335,10,event,Pangaea begins to assemble,https://en.wikipedia.org/wiki/Pangaea
