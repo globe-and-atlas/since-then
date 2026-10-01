@@ -13,7 +13,7 @@ Build the Deep Time watchface for Pebble Time 2: Earth's 4,540-million-year hist
 - [x] `watchface/` builds for Emery.
 - [x] The emulator checks pass at the anchor times (17/17).
 - [x] The CloudPebble simulation drops no files.
-- [ ] A fresh verifier approves.
+- [x] A fresh verifier approves (2026-10-01, second pass; the first pass rejected d6d61e7, see knowledge/ERRORS.md).
 - [ ] A day on the physical watch: legible at a glance; battery drain logged.
 
 ## Historical lenses (owner: build now, 2026-09-30)

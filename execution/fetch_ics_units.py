@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -22,6 +23,15 @@ SOURCE = (
 )
 RANKS = ["Eon", "Era", "Period", "Epoch"]
 FIELDS = ["rank", "name", "parent", "base_ma", "base_uncertainty_ma", "top_ma", "color", "source"]
+
+
+def slug_label(slug: str) -> str:
+    """Readable name for a unit the chart leaves without an English label (20 epochs, e.g. "UpperCretaceous").
+
+    The slug uses the rock-layer terms Lower/Upper; a clock shows time, so use the time terms Early/Late.
+    """
+    words = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", slug).split()
+    return " ".join({"Lower": "Early", "Upper": "Late"}.get(w, w) for w in words)
 
 
 def download() -> Path:
@@ -55,7 +65,7 @@ def parse(path: Path) -> list[dict[str, str]]:
         for o in g.objects(node, SKOS.prefLabel):
             if getattr(o, "language", None) == "en":
                 return str(o)
-        return str(node).rsplit("/", 1)[-1]
+        return slug_label(str(node).rsplit("/", 1)[-1])
 
     def boundary(node: URIRef, pred: URIRef) -> tuple[float | None, float | None]:
         for b in g.objects(node, pred):

@@ -3,7 +3,8 @@
 
 Pinned scenarios build with ST_TEST_SECONDS and ST_TEST_LENS:
   deep_1119     Deep Time 11:19      Paleoproterozoic unit, oxygen event
-  deep_2339     Deep Time 23:39:30   Cretaceous–Paleogene boundary
+  deep_2340     Deep Time 23:40      Cretaceous–Paleogene boundary (66.0 Ma is 23:39:03; a minute
+                                     face first draws it at 23:40)
   deep_235950   Deep Time 23:59:50   seconds shown, age under 600,000 years
   holocene_1200 / ce_1200 / m2_1200  each historical lens at noon
   bluetooth     Deep Time 11:19 with Bluetooth disconnected: identical to deep_1119
@@ -32,7 +33,7 @@ EVENT = (6, 116, 194, 156)
 
 PINNED = {
     "deep_1119": (0, 11 * 3600 + 19 * 60),
-    "deep_2339": (0, 23 * 3600 + 39 * 60 + 30),
+    "deep_2340": (0, 23 * 3600 + 40 * 60),
     "deep_235950": (0, 86390),
     "holocene_1200": (1, 43200),
     "ce_1200": (2, 43200),
@@ -65,11 +66,17 @@ def install() -> None:
     time.sleep(3)
 
 
-def shot(name: str):
+def shot(name: str, required: bool = True):
     from PIL import Image
     OUT.mkdir(parents=True, exist_ok=True)
     path = OUT / f"{name}.png"
-    run(["pebble", "screenshot", "--emulator", "emery", "--no-open", str(path)], timeout=60)
+    path.unlink(missing_ok=True)  # never pixel-check a screenshot left by an earlier run
+    r = run(["pebble", "screenshot", "--emulator", "emery", "--no-open", str(path)], timeout=60)
+    if r.returncode or not path.exists():
+        if not required:
+            print(f"note: screenshot {name} not captured (reference only)")
+            return None
+        raise SystemExit(f"screenshot {name} failed:\n" + r.stdout[-2000:] + r.stderr[-2000:])
     return Image.open(path).convert("RGB")
 
 
@@ -134,9 +141,9 @@ def midnight(results: list[tuple[str, bool]]) -> None:
     try:
         start = time.time()
         time.sleep(75)  # past the first real minute boundary: the face is in 23:59
-        shot("midnight_before")
+        shot("midnight_before", required=False)  # the log lines are the check
         time.sleep(max(0, 140 - (time.time() - start)))  # past the second: after midnight
-        shot("midnight_after")
+        shot("midnight_after", required=False)
     finally:
         logs.terminate()
     text = logs.communicate(timeout=10)[0]
@@ -161,16 +168,18 @@ def main() -> None:
     except ImportError:
         sys.exit("Missing dependency: pip install pillow")
     results: list[tuple[str, bool]] = []
-    for name in chosen:
-        if name in PINNED:
-            pinned(name, results)
-        elif name == "bluetooth":
-            bluetooth(results)
-        elif name == "settings":
-            settings(results)
-        else:
-            midnight(results)
-    build()  # leave a clean, unpinned build behind
+    try:
+        for name in chosen:
+            if name in PINNED:
+                pinned(name, results)
+            elif name == "bluetooth":
+                bluetooth(results)
+            elif name == "settings":
+                settings(results)
+            else:
+                midnight(results)
+    finally:
+        build()  # leave a clean, unpinned build behind, even after a failed scenario
     print(f"{sum(ok for _, ok in results)}/{len(results)} passed; screenshots: {OUT.relative_to(ROOT)}")
     sys.exit(0 if all(ok for _, ok in results) else 1)
 

@@ -9,7 +9,7 @@
 #define DAY 86400
 #define LAST_MINUTE (DAY - 60)
 #define EARTH_YEARS 4540000000LL
-#define UNIT_NAME 20
+#define UNIT_NAME 24
 #define EVENT_LABEL 64
 #define LENS_NAME 20
 #define DEEP_UNIT_SIZE (4 + 4 + 1 + 1 + UNIT_NAME)
@@ -184,25 +184,24 @@ static GColor text_on(GColor bg) {
 
 typedef struct { const char *name, *context; GColor color; } Band;
 
-static Band deep_band(int tod) {
+/* The band is the period, or the era or eon where no period is defined. Context below it: the epoch
+ * (where one exists) and the era, or the eon under an era band. */
+static Band deep_band(int tod, char *context, size_t size) {
   Band band = {"", "", GColorDarkGray};
-  int best = -1, rank_best = -1;
+  const uint8_t *at[RANK_EPOCH + 1] = {NULL};
   for (int i = 0; i < s_deep_units; i++) {
     const uint8_t *u = deep_unit(i);
-    if ((int)rd_u32(u) <= tod && tod < (int)rd_u32(u + 4) && u[8] > rank_best) { best = i; rank_best = u[8]; }
+    if (u[8] <= RANK_EPOCH && (int)rd_u32(u) <= tod && tod < (int)rd_u32(u + 4)) at[u[8]] = u;
   }
-  if (best < 0) return band;
-  const uint8_t *u = deep_unit(best);
-  band.name = (const char *)(u + 10);
-  band.color = (GColor){.argb = u[9]};
-  /* Context: the era, or the eon where no era is defined. */
-  for (int rank = RANK_ERA; rank >= RANK_EON; rank--) {
-    if (rank >= rank_best) continue;
-    for (int i = 0; i < s_deep_units; i++) {
-      const uint8_t *c = deep_unit(i);
-      if (c[8] == rank && (int)rd_u32(c) <= tod && tod < (int)rd_u32(c + 4)) { band.context = (const char *)(c + 10); return band; }
-    }
-  }
+  int rank = at[RANK_PERIOD] ? RANK_PERIOD : at[RANK_ERA] ? RANK_ERA : RANK_EON;
+  if (!at[rank]) return band;
+  band.name = (const char *)(at[rank] + 10);
+  band.color = (GColor){.argb = at[rank][9]};
+  const char *above = rank == RANK_PERIOD && at[RANK_ERA] ? (const char *)(at[RANK_ERA] + 10)
+                    : rank >= RANK_ERA && at[RANK_EON] ? (const char *)(at[RANK_EON] + 10) : "";
+  if (rank == RANK_PERIOD && at[RANK_EPOCH]) snprintf(context, size, "%s, %s", (const char *)(at[RANK_EPOCH] + 10), above);
+  else snprintf(context, size, "%s", above);
+  band.context = context;
   return band;
 }
 
@@ -223,9 +222,13 @@ static void draw_strip(GContext *ctx, int y, int tod, int64_t start_milli, int64
     /* A tick at each century (CE lenses) or millennium (Holocene). */
     int step = s_lens == LENS_HOLOCENE ? 1000 : 100;
     graphics_context_set_stroke_color(ctx, GColorLightGray);
+    /* yr counts calendar boundaries; BCE year N is astronomical 1 - N, so 9000 BCE sits at -8999. */
     int64_t first = floor_div(start_milli / 1000, step) * step + step;
-    for (int64_t yr = first; yr * 1000 < now_milli; yr += step) {
-      int x = STRIP_X + (int)((yr * 1000 - start_milli) * STRIP_W / (now_milli - start_milli));
+    for (int64_t yr = first;; yr += step) {
+      int64_t astro = yr <= 0 ? yr + 1 : yr;
+      if (astro * 1000 >= now_milli) break;
+      if (astro * 1000 <= start_milli) continue;
+      int x = STRIP_X + (int)((astro * 1000 - start_milli) * STRIP_W / (now_milli - start_milli));
       graphics_draw_line(ctx, GPoint(x, y), GPoint(x, y + 9));
     }
   }
@@ -266,11 +269,11 @@ static void canvas_update(Layer *layer, GContext *ctx) {
   char num[24];
   const char *unit = "";
   Band band = {"", "", GColorDarkGray};
-  char band_text[32] = "", context_text[32] = "";
+  char band_text[32] = "", context_text[56] = "";
   int64_t start_milli = 0, now_milli = 0;
   if (s_lens == LENS_DEEP) {
     deep_age(tod, num, sizeof(num), &unit);
-    band = deep_band(tod);
+    band = deep_band(tod, context_text, sizeof(context_text));
   } else {
     start_milli = (int64_t)hist_lens_start(s_lens) * 1000;
     now_milli = now_milli_year(t, tod);
@@ -351,11 +354,18 @@ static void canvas_update(Layer *layer, GContext *ctx) {
 
 static void ticked(struct tm *t, TimeUnits changed);
 
+/* True while more than one event shares the latest clock second (only 23:59:59 in Deep Time). */
+static bool shared_second(void) {
+  time_t now = time(NULL);
+  int first, last;
+  return latest_group(clock_seconds(localtime(&now)), &first, &last) && last > first;
+}
+
 static void rotate(void *data) {
   s_rotate_timer = NULL;
   s_rot++;
   layer_mark_dirty(s_canvas);
-  if (s_seconds) s_rotate_timer = app_timer_register(ROTATE_MS, rotate, NULL);
+  if (s_seconds && shared_second()) s_rotate_timer = app_timer_register(ROTATE_MS, rotate, NULL);
 }
 
 /* Minute ticks, except Deep Time's last minute, which ticks every second. */
@@ -366,7 +376,6 @@ static void choose_tick(int tod) {
   tick_timer_service_unsubscribe();
   tick_timer_service_subscribe(want ? SECOND_UNIT : MINUTE_UNIT, ticked);
   APP_LOG(APP_LOG_LEVEL_INFO, "tick: %s", want ? "seconds" : "minutes");
-  if (want && !s_rotate_timer) s_rotate_timer = app_timer_register(ROTATE_MS, rotate, NULL);
   if (!want && s_rotate_timer) { app_timer_cancel(s_rotate_timer); s_rotate_timer = NULL; }
 }
 
@@ -377,6 +386,10 @@ static void refresh(void) {
   build_span(t, tod);
   choose_tick(tod);
   if (!s_seconds) s_rot++; /* minute ticks also take turns through a shared second */
+  else if (!s_rotate_timer && shared_second()) {
+    APP_LOG(APP_LOG_LEVEL_INFO, "rotate: on");
+    s_rotate_timer = app_timer_register(ROTATE_MS, rotate, NULL);
+  }
   layer_mark_dirty(s_canvas);
 }
 
@@ -387,7 +400,12 @@ static void ticked(struct tm *t, TimeUnits changed) { refresh(); }
 static void inbox(DictionaryIterator *iter, void *context) {
   Tuple *t = dict_find(iter, MESSAGE_KEY_Setting_Lens);
   if (!t) return;
-  int lens = t->type == TUPLE_CSTRING ? atoi(t->value->cstring) : (int)t->value->int32;
+  int lens;
+  if (t->type == TUPLE_CSTRING) lens = atoi(t->value->cstring);
+  else if (t->length == 1) lens = t->type == TUPLE_INT ? t->value->int8 : t->value->uint8;
+  else if (t->length == 2) lens = t->type == TUPLE_INT ? t->value->int16 : t->value->uint16;
+  else if (t->length == 4) lens = t->type == TUPLE_INT ? (int)t->value->int32 : (int)t->value->uint32;
+  else return;
   if (lens < 0 || lens >= LENS_COUNT) return;
   s_lens = lens;
   persist_write_int(PERSIST_LENS, s_lens);

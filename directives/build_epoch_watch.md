@@ -89,7 +89,7 @@ Data:
 Watch:
 - [ ] `pebble build` succeeds for Emery with no warnings in our sources.
 - [ ] At 11:19 the emulator shows a Paleoproterozoic unit and an oxygen event (screenshot inspected).
-- [ ] At 23:39 it shows the Cretaceous–Paleogene boundary (screenshot inspected).
+- [ ] At 23:40 it shows the Cretaceous–Paleogene boundary (screenshot inspected). (Was 23:39: 66.0 Ma is 23:39:03, so a minute-ticking face first draws it at 23:40. Amended 2026-10-01.)
 - [ ] At 23:59:50 it shows seconds ticking and an age under 600,000 years (screenshot inspected).
 - [ ] At 00:00:30 it has returned to minute ticks (tick-unit log line in `pebble logs`).
 - [ ] Every age label uses the right unit: Ga ≥ 1,000 Ma, Ma ≥ 1 Ma, otherwise years with thousands separators.
@@ -205,3 +205,15 @@ The owner overrode the 7-day wrist gate on 2026-09-30: the Holocene, Common Era 
 - **The last second:** events sharing a clock second take turns every 333 ms during seconds ticks, and once per minute otherwise.
 - **Results:** pytest 38; emulator 17/17 (Deep Time 11:19, 23:39:30 and 23:59:50; each historical lens at noon; Bluetooth off; the settings switch; seconds from 23:59 and minutes after midnight); the CloudPebble simulation drops nothing.
 - **Still open:** a fresh verifier pass; a day on the physical watch.
+
+## Learnings — 2026-10-01 (verifier fixes)
+- **A fresh verifier rejected d6d61e7** on four items. All four are fixed here.
+- **The ICS chart has no English `prefLabel` for 20 epochs** (Lower/Middle/Upper Ordovician through Upper Cretaceous). `fetch_ics_units.py` now turns the URI slug into words and uses the time terms Early/Late instead of the rock-layer terms Lower/Upper. `UNIT_NAME` went from 20 to 24 bytes so that "Middle Mississippian" and "Middle Pennsylvanian" fit.
+- **The unit band now shows the period** (or the era or eon where no period is defined), as specified. The line below it shows the epoch and era, e.g. "Late Cretaceous, Mesozoic".
+- **The K–Pg anchor moved to 23:40.** 66.0 Ma is 23:39:03, and a minute-ticking face draws 23:39:00, which is before the impact. The old 23:39:30 pin tested a moment the watch never draws.
+- **`tests/test_c_mapping.py`** compiles `deep_age()` straight from `main.c` with the host compiler and checks it against Python at 100 times.
+- **Low-severity fixes:**
+  - The 333 ms rotation timer now runs only while several events share the current second.
+  - The lens setting is read by its tuple length.
+  - Holocene millennium ticks sit on calendar BCE years.
+  - `emulator_check.py` restores an unpinned build even when a scenario fails.
