@@ -12,3 +12,6 @@ Record deterministic errors, root causes, and fixes here.
 - **An emulator anchor tested a moment the face never draws** (23:39:30 on a minute face). Fix: the anchor is 23:40. Graduated rule: pin emulator times to minute boundaries unless the face is ticking seconds.
 - **A contract test was missing** (Python vs C at 100 times). Fix: `tests/test_c_mapping.py`.
 - **Infrastructure (log only):** in the 2026-10-01 full emulator run, the midnight scenario's `pebble install --logs` hit a `libpebble2` TimeoutError (the emulator stopped answering after 15 installs). It passed 2/2 after `pebble kill`. Also, piping `emulator_check.py` through `tail` hides its exit code, so read the PASS/FAIL lines rather than the exit status.
+
+## 2026-10-01: store releases went live instead of drafts
+- The owner asked for drafts. `pebble publish --non-interactive` without `--is-published` still made every release public, both new listings and updates. Cause: a project note (straight-ahead build_and_emulate.md step 3) said this flag controls drafts, and it doesn't. Graduated rule: `pebble publish` means public; stage drafts on the dashboard. Recorded in from-here/knowledge/procedural/emulator_and_release.md.

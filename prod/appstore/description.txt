@@ -1,0 +1,13 @@
+Since Then squeezes a long stretch of time into one day. Midnight is the start of the span, the next midnight is now, and the face shows where this moment falls.
+
+Choose your timeline in settings:
+- Deep Time: Earth's 4.54 billion years
+- Holocene: since the ice age, 11,700 years
+- Common Era: since 1 CE
+- Second Millennium: since 1001 CE
+
+In Deep Time, oxygen fills the air mid-morning, animals appear after 21:00, the dinosaurs die at 23:39, and humans arrive seconds before midnight. The last minute ticks in seconds.
+
+Each screen shows the date on the timeline, the period or century, and the latest event with how long ago it happened on this clock. Geologic time follows the ICS International Chronostratigraphic Chart (v2024-12, CC BY 4.0), and every event is checked against its cited source.
+
+Fully offline. The clock is 24-hour on purpose, since midnight to midnight is the span. The colour of the time digits is configurable.
