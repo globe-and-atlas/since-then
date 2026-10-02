@@ -1,1 +1,1 @@
-Store listing refresh: an animated tour of Deep Time through the day, plus three screenshots for each timeline (Deep Time, Holocene, Common Era, Second Millennium). The watchface itself is unchanged.
+Store listing refresh: the animated screenshot now plays the Second Millennium (1001 CE to now) across one day, plus three screenshots for each timeline. The watchface itself is unchanged.

@@ -65,13 +65,13 @@ static const uint8_t *table(const uint8_t *buf, size_t size, const char *magic, 
 #ifdef ST_TEST_TOUR
 /* Store screenshots: each wrist tap (pebble emu-tap) moves to the next pinned lens and time. */
 static const struct { int lens; int seconds; } TOUR[] = {
-  /* Deep Time across the day: the animated screenshot */
-  {0, 3600}, {0, 14400}, {0, 25200}, {0, 34200}, {0, 40740}, {0, 50400}, {0, 61200},
-  {0, 70200}, {0, 76200}, {0, 80400}, {0, 82800}, {0, 85200}, {0, 86390},
-  /* Holocene, Common Era and Second Millennium stills */
+  /* Second Millennium (1001 CE to now) across the day: the animated screenshot */
+  {3, 3600}, {3, 10800}, {3, 18000}, {3, 25200}, {3, 32400}, {3, 39600}, {3, 46800},
+  {3, 54000}, {3, 61200}, {3, 68400}, {3, 75600}, {3, 81000}, {3, 85500},
+  /* Deep Time, Holocene and Common Era stills */
+  {0, 40740}, {0, 85200}, {0, 86390},
   {1, 10800}, {1, 43200}, {1, 77400},
   {2, 21600}, {2, 43200}, {2, 79200},
-  {3, 21600}, {3, 54000}, {3, 81000},
 };
 #define TOUR_COUNT ((int)(sizeof(TOUR) / sizeof(TOUR[0])))
 static int s_tour;

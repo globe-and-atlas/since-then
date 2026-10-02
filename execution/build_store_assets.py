@@ -3,9 +3,9 @@
 
 Input: .tmp/store_tour/NN.png from `python3 execution/capture_store_tour.py` (TOUR order in main.c).
 Output, in prod/appstore/ (store screenshot names must start with the platform, "emery_"):
-  emery_01_deep_time_day.gif   animated, Deep Time only: Earth's day from the Hadean to the last seconds
-  emery_02..13_*.png           three stills for each timeline: Deep Time, Holocene, Common Era,
-                               Second Millennium
+  emery_01_second_millennium_day.gif   animated, Second Millennium only: 1001 CE to now across the day
+  emery_02..13_*.png                   three stills for each timeline: Second Millennium, Deep Time,
+                                       Holocene, Common Era
   icons/thumbnail-80.png, icons/thumbnail-144.png   the full screen on a black square
 Usage: python3 execution/build_store_assets.py [--dry-run]
 """
@@ -19,25 +19,25 @@ ROOT = Path(__file__).resolve().parents[1]
 TOUR = ROOT / ".tmp" / "store_tour"
 OUT = ROOT / "prod" / "appstore"
 SCREEN = (200, 228)
-GIF_FRAMES = range(0, 13)  # tour stops 00..12: Deep Time, 01:00 to 23:59:50
+GIF_FRAMES = range(0, 13)  # tour stops 00..12: Second Millennium, 01:00 to 23:45
 FRAME_MS = 1100
-LAST_FRAME_MS = 2600       # linger on the last seconds before the loop restarts
+LAST_FRAME_MS = 2600       # linger on the present before the loop restarts
 STILLS = {
-    "emery_02_deep_time_1119.png": 4,
-    "emery_03_deep_time_2340.png": 11,
-    "emery_04_deep_time_235950.png": 12,
-    "emery_05_holocene_0300.png": 13,
-    "emery_06_holocene_1200.png": 14,
-    "emery_07_holocene_2130.png": 15,
-    "emery_08_common_era_0600.png": 16,
-    "emery_09_common_era_1200.png": 17,
-    "emery_10_common_era_2200.png": 18,
-    "emery_11_second_millennium_0600.png": 19,
-    "emery_12_second_millennium_1500.png": 20,
-    "emery_13_second_millennium_2230.png": 21,
+    "emery_02_second_millennium_0700.png": 3,
+    "emery_03_second_millennium_1500.png": 7,
+    "emery_04_second_millennium_2230.png": 11,
+    "emery_05_deep_time_1119.png": 13,
+    "emery_06_deep_time_2340.png": 14,
+    "emery_07_deep_time_235950.png": 15,
+    "emery_08_holocene_0300.png": 16,
+    "emery_09_holocene_1200.png": 17,
+    "emery_10_holocene_2130.png": 18,
+    "emery_11_common_era_0600.png": 19,
+    "emery_12_common_era_1200.png": 20,
+    "emery_13_common_era_2200.png": 21,
 }
-GIF_NAME = "emery_01_deep_time_day.gif"
-ICON_STOP = 11
+GIF_NAME = "emery_01_second_millennium_day.gif"
+ICON_STOP = 14  # Deep Time 23:40, unchanged
 ICON_SIZES = (80, 144)
 
 
