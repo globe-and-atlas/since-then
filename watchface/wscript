@@ -1,7 +1,8 @@
 #
 # Pebble build rules for Since Then. ST_TEST_SECONDS (0..86399) and ST_TEST_LENS (0..3) pin the
 # clock and lens for emulator screenshots; ST_TEST_START_MINUTE (0..1439) starts a running clock at
-# that minute. None is ever set for a distributable build.
+# that minute. ST_TEST_TOUR=1 steps through the store screenshot tour on each tap. None is ever set
+# for a distributable build.
 #
 import os
 
@@ -23,7 +24,7 @@ def build(ctx):
     cached_env = ctx.env
     for platform in ctx.env.TARGET_PLATFORMS:
         ctx.env = ctx.all_envs[platform]
-        for name, limit in (('ST_TEST_SECONDS', 86400), ('ST_TEST_LENS', 4), ('ST_TEST_START_MINUTE', 1440)):
+        for name, limit in (('ST_TEST_SECONDS', 86400), ('ST_TEST_LENS', 4), ('ST_TEST_START_MINUTE', 1440), ('ST_TEST_TOUR', 2)):
             value = os.environ.get(name)
             if value is not None:
                 if not 0 <= int(value) < limit:

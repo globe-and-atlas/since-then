@@ -1,1 +1,1 @@
-First release. Four timelines to choose from: Deep Time, Holocene, Common Era and Second Millennium. Geologic periods from the ICS chart v2024-12, with the epoch and era below each period. In Deep Time the final minute ticks in seconds. Settings: timeline and time digits colour.
+Store listing refresh: an animated tour of Deep Time through the day, plus three screenshots for each timeline (Deep Time, Holocene, Common Era, Second Millennium). The watchface itself is unchanged.

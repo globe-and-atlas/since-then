@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
-"""Build the RePebble store assets for Since Then from the emulator screenshots.
+"""Build the RePebble store assets for Since Then from the screenshot tour.
 
-Input: .tmp/emulator/*.png from `python3 execution/emulator_check.py` (pinned times, 200x228 emery).
-Output, in prod/appstore/:
-  emery_1_lenses.gif       animated: the four timelines you can choose, one after another
-  emery_2_deep_1119.png    Deep Time 11:19, the Great Oxidation Event
-  emery_3_deep_2340.png    Deep Time 23:40, just after the dinosaurs die
-  emery_4_deep_235950.png  Deep Time 23:59:50, the last minute in seconds
-  emery_5_holocene.png     Holocene at noon
+Input: .tmp/store_tour/NN.png from `python3 execution/capture_store_tour.py` (TOUR order in main.c).
+Output, in prod/appstore/ (store screenshot names must start with the platform, "emery_"):
+  emery_01_deep_time_day.gif   animated, Deep Time only: Earth's day from the Hadean to the last seconds
+  emery_02..13_*.png           three stills for each timeline: Deep Time, Holocene, Common Era,
+                               Second Millennium
   icons/thumbnail-80.png, icons/thumbnail-144.png   the full screen on a black square
-Store screenshot filenames must start with the platform name ("emery_").
 Usage: python3 execution/build_store_assets.py [--dry-run]
 """
 from __future__ import annotations
@@ -19,27 +16,36 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SHOTS = ROOT / ".tmp" / "emulator"
+TOUR = ROOT / ".tmp" / "store_tour"
 OUT = ROOT / "prod" / "appstore"
 SCREEN = (200, 228)
-# One frame per lens, in the order the settings page lists them.
-LENSES = ["deep_2340", "holocene_1200", "ce_1200", "m2_1200"]
-FRAME_MS = 1800
+GIF_FRAMES = range(0, 13)  # tour stops 00..12: Deep Time, 01:00 to 23:59:50
+FRAME_MS = 1100
+LAST_FRAME_MS = 2600       # linger on the last seconds before the loop restarts
 STILLS = {
-    "emery_2_deep_1119.png": "deep_1119",
-    "emery_3_deep_2340.png": "deep_2340",
-    "emery_4_deep_235950.png": "deep_235950",
-    "emery_5_holocene.png": "holocene_1200",
+    "emery_02_deep_time_1119.png": 4,
+    "emery_03_deep_time_2340.png": 11,
+    "emery_04_deep_time_235950.png": 12,
+    "emery_05_holocene_0300.png": 13,
+    "emery_06_holocene_1200.png": 14,
+    "emery_07_holocene_2130.png": 15,
+    "emery_08_common_era_0600.png": 16,
+    "emery_09_common_era_1200.png": 17,
+    "emery_10_common_era_2200.png": 18,
+    "emery_11_second_millennium_0600.png": 19,
+    "emery_12_second_millennium_1500.png": 20,
+    "emery_13_second_millennium_2230.png": 21,
 }
-ICON_SOURCE = "deep_2340"
+GIF_NAME = "emery_01_deep_time_day.gif"
+ICON_STOP = 11
 ICON_SIZES = (80, 144)
 
 
-def load(name: str):
+def load(stop: int):
     from PIL import Image
-    path = SHOTS / f"{name}.png"
+    path = TOUR / f"{stop:02d}.png"
     if not path.exists():
-        sys.exit(f"missing {path.relative_to(ROOT)}: run execution/emulator_check.py first")
+        sys.exit(f"missing {path.relative_to(ROOT)}: run execution/capture_store_tour.py first")
     img = Image.open(path).convert("RGB")
     if img.size != SCREEN:
         sys.exit(f"{path.name} is {img.size}, expected {SCREEN}")
@@ -49,9 +55,8 @@ def load(name: str):
 def icon(img, size: int):
     from PIL import Image
     canvas = Image.new("RGB", (size, size), "black")
-    scale = size / SCREEN[1]  # fit the full height so no label is cropped
-    w, h = round(SCREEN[0] * scale), size
-    canvas.paste(img.resize((w, h), Image.LANCZOS), ((size - w) // 2, 0))
+    w = round(SCREEN[0] * size / SCREEN[1])  # fit the full height so no label is cropped
+    canvas.paste(img.resize((w, size), Image.LANCZOS), ((size - w) // 2, 0))
     return canvas
 
 
@@ -63,22 +68,24 @@ def main() -> None:
         from PIL import Image
     except ImportError:
         sys.exit("Missing dependency: pip install pillow")
-    frames = [load(n) for n in LENSES]
-    stills = {out: load(src) for out, src in STILLS.items()}
-    source = load(ICON_SOURCE)
-    outputs = ["emery_1_lenses.gif", *STILLS, *(f"icons/thumbnail-{s}.png" for s in ICON_SIZES)]
+    frames = [load(i) for i in GIF_FRAMES]
+    stills = {name: load(stop) for name, stop in STILLS.items()}
+    source = load(ICON_STOP)
+    outputs = [GIF_NAME, *STILLS, *(f"icons/thumbnail-{s}.png" for s in ICON_SIZES)]
     if args.dry_run:
         print("would write:", ", ".join(outputs))
         return
     (OUT / "icons").mkdir(parents=True, exist_ok=True)
-    # The emery screen is 64 colours, so an adaptive palette loses nothing.
-    pal = [f.convert("P", palette=Image.ADAPTIVE, colors=64) for f in frames]
-    pal[0].save(OUT / "emery_1_lenses.gif", save_all=True, append_images=pal[1:], duration=FRAME_MS, loop=0, optimize=False)
-    for out, img in stills.items():
-        img.save(OUT / out)
+    for old in OUT.glob("emery_*"):  # names change between tours; never upload a stale screenshot
+        old.unlink()
+    pal = [f.convert("P", palette=Image.ADAPTIVE, colors=64) for f in frames]  # the screen has 64 colours
+    durations = [FRAME_MS] * (len(pal) - 1) + [LAST_FRAME_MS]
+    pal[0].save(OUT / GIF_NAME, save_all=True, append_images=pal[1:], duration=durations, loop=0, optimize=False)
+    for name, img in stills.items():
+        img.save(OUT / name)
     for s in ICON_SIZES:
         icon(source, s).save(OUT / "icons" / f"thumbnail-{s}.png")
-    print("wrote", ", ".join(outputs), "to", OUT.relative_to(ROOT))
+    print("wrote", len(outputs), "files to", OUT.relative_to(ROOT))
 
 
 if __name__ == "__main__":

@@ -62,12 +62,30 @@ static const uint8_t *table(const uint8_t *buf, size_t size, const char *magic, 
 
 /* ---------------- time ---------------- */
 
+#ifdef ST_TEST_TOUR
+/* Store screenshots: each wrist tap (pebble emu-tap) moves to the next pinned lens and time. */
+static const struct { int lens; int seconds; } TOUR[] = {
+  /* Deep Time across the day: the animated screenshot */
+  {0, 3600}, {0, 14400}, {0, 25200}, {0, 34200}, {0, 40740}, {0, 50400}, {0, 61200},
+  {0, 70200}, {0, 76200}, {0, 80400}, {0, 82800}, {0, 85200}, {0, 86390},
+  /* Holocene, Common Era and Second Millennium stills */
+  {1, 10800}, {1, 43200}, {1, 77400},
+  {2, 21600}, {2, 43200}, {2, 79200},
+  {3, 21600}, {3, 54000}, {3, 81000},
+};
+#define TOUR_COUNT ((int)(sizeof(TOUR) / sizeof(TOUR[0])))
+static int s_tour;
+#endif
+
 #ifdef ST_TEST_START_MINUTE
 static int s_test_offset; /* whole minutes, so real minute ticks stay on the face's minute boundaries */
 #endif
 
 static int clock_seconds(struct tm *t) {
-#ifdef ST_TEST_SECONDS
+#ifdef ST_TEST_TOUR
+  (void)t;
+  return TOUR[s_tour].seconds;
+#elif defined(ST_TEST_SECONDS)
   (void)t;
   return ST_TEST_SECONDS;
 #else
@@ -433,6 +451,15 @@ static void window_load(Window *window) {
 
 static void window_unload(Window *window) { layer_destroy(s_canvas); }
 
+#ifdef ST_TEST_TOUR
+static void tour_tap(AccelAxisType axis, int32_t direction) {
+  s_tour = (s_tour + 1) % TOUR_COUNT;
+  s_lens = TOUR[s_tour].lens;
+  APP_LOG(APP_LOG_LEVEL_INFO, "tour %d", s_tour);
+  refresh();
+}
+#endif
+
 static void init(void) {
   if (persist_exists(PERSIST_LENS)) s_lens = persist_read_int(PERSIST_LENS);
   if (s_lens < 0 || s_lens >= LENS_COUNT) s_lens = LENS_DEEP;
@@ -456,6 +483,11 @@ static void init(void) {
   app_message_register_inbox_received(inbox);
   app_message_open(128, 32);
   tick_timer_service_subscribe(MINUTE_UNIT, ticked);
+#ifdef ST_TEST_TOUR
+  s_lens = TOUR[0].lens;
+  s_time_hex = 0xFFFFFF; /* store shots use the default colour, whatever the emulator has saved */
+  accel_tap_service_subscribe(tour_tap);
+#endif
   refresh();
 }
 
